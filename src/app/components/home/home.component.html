@@ -1,0 +1,66 @@
+<div class="hero">
+  <div class="container">
+    <div class="col">
+      <h1 class="hero-title-top">Food</h1>
+      <h1 class="hero-title-bottom">Discover Restaurant & Delicious Food</h1>
+      <form>
+        <input type="text" placeholder="search restaurant" />
+        <button>GO</button>
+      </form>
+    </div>
+    <!-- ./ col -->
+    <div class="col">
+      <img [src]="imgPath" alt="img" />
+    </div>
+    <!-- ./ col -->
+  </div>
+  <!-- ./ container -->
+
+  <div class="location"><i class="fas fa-map-marker-alt"></i>Chennai</div>
+</div>
+<!-- ./ hero -->
+
+<div class="container">
+  <!-- #####################   STATIC CONTENT -->
+  <div class="static-content">
+    <div class="blockquote-wrapper">
+      <div class="col blockquote">
+        <h2>some top restaurants for dining out or in !</h2>
+      </div>
+      <div class="col">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
+          soluta deleniti ipsum dolores! Fuga culpa corrupti iure sunt
+          consectetur hic facere voluptas voluptates, necessitatibus maiores
+          explicabo nobis optio illo voluptate Fuga culpa corrupti iure sunt
+          consectetur
+        </p>
+      </div>
+    </div>
+    <!-- ./ blockquote-wrapper -->
+  </div>
+  <!-- ./ static-content -->
+
+  <!-- #####################   END: STATIC CONTENT -->
+
+  <!-- #####################   EXPLORE FOODS -->
+
+  <div class="explore-foods">
+    <h3>Explore Our Foods</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dolorem odio
+      ea aperiam quaerat adipisci reprehenderit harum fuga quisquam.
+    </p>
+    <div class="cards">
+      <app-food-item-card
+        *ngFor="let item of items"
+        [item]="item"
+      ></app-food-item-card>
+    </div>
+    <!-- ./ cards-->
+  </div>
+  <!-- ./ explore-foods-->
+
+  <!-- #####################   END: EXPLORE FOODS -->
+</div>
+<!-- ./ container -->

@@ -1,0 +1,31 @@
+// Imports - Resets, Variables, Fonts
+@import "./constants/css/resets.scss";
+@import "./constants/css/variables.scss";
+@import "./constants/fonts/georgia/stylesheet.css";
+@import "./constants/fonts/poppins/stylesheet.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css";
+
+body {
+  font-family: "poppins";
+  background-color: $theme-bg;
+}
+::placeholder {
+  font-family: "poppins" !important;
+  color: #849198;
+}
+
+sup {
+  font-size: xx-small;
+  vertical-align: top;
+}
+
+a {
+  color: $default-color;
+  text-decoration: none;
+}
+
+// Container Prefs
+.container {
+  width: 85%;
+  margin: 0 auto;
+}

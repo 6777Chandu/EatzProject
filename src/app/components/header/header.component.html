@@ -1,0 +1,56 @@
+<div class="navbar">
+  <div class="container">
+    <nav>
+      <h2><a routerLink="">eatz</a></h2>
+      <ul>
+        <li>
+          <a
+            routerLink="home"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >home</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="offers"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >offers</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="restaurents"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >restaurents</a
+          >
+        </li>
+        <li *ngIf="loginMode">
+          <a
+            routerLink="orders"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >orders</a
+          >
+        </li>
+        <li *ngIf="loginMode">
+          <a
+            routerLink="restaurents"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >account</a
+          >
+        </li>
+      </ul>
+      <div *ngIf="loginMode" class="cart">
+        <p class="cart-link">cart<sup>3</sup></p>
+        <div class="cart-items">No Items in the Cart</div>
+      </div>
+      <!-- ./ cart -->
+    </nav>
+  </div>
+  <!-- ./ container -->
+</div>
+<!-- ./ navbar -->

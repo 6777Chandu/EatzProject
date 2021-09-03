@@ -1,0 +1,29 @@
+<div class="item-card">
+  <img
+    src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,c_fill/{{
+      item.cloudinaryImageId
+    }}"
+    alt="title_img"
+  />
+  <div *ngIf="cardHome" class="item-card-home">
+    <div class="meta">
+      <h2>{{ item.name }}</h2>
+      <h2>&#8377; {{ item.price.discountPrice }}</h2>
+    </div>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, itaque.
+    </p>
+  </div>
+  <!-- ./ item-card-home -->
+
+  <div *ngIf="cardRestaurent" class="item-card-restaurent">
+    <h2>Ham Sandwich</h2>
+    <h2>$10.50</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, itaque.
+    </p>
+    <button>Add to Cart</button>
+  </div>
+  <!-- ./ item-card-restaurent -->
+</div>
+<!-- ./ item-card-->
