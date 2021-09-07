@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+// TODO: Consider using ngtemplate or any other angular feature instead of this service
 @Injectable({
   providedIn: 'root',
 })
