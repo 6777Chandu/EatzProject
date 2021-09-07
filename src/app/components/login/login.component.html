@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="login-module-wrapper">
+    <div class="login-col">
+      <img src="assets/images/LoginImage.png" alt="" />
+    </div>
+    <!-- ./ login-col -->
+    <div class="login-col form-module">
+      <h2>Login into Eatz</h2>
+     
+      <form (ngSubmit)="onFormSubmit()" #form="ngForm">
+        <div class="form-errors" *ngIf="user.access === false">
+          <i class="fas fa-arrow-circle-right"></i>
+          Wrong Username/Password
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="username"
+            ngModel
+            name="username"
+            required
+            #name="ngModel"
+          />
+          <p *ngIf="!name.valid && name.touched">Please enter Username</p>
+        </div>
+        <div>
+          <input
+            type="password"
+            placeholder="password"
+            ngModel
+            name="password"
+            required
+            #pass = "ngModel"
+          />
+          <p *ngIf="!pass.valid && pass.touched">Please enter Password</p>
+        </div>
+        <button [disabled]="!form.valid" type="submit">Login</button>
+      </form>
+    </div>
+    <!-- ./ login-col -->
+  </div>
+  <!-- ./ login-module-wrapper -->
+</div>
+<!-- ./ container -->

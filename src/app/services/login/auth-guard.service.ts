@@ -23,7 +23,7 @@ export class AuthGuardService implements CanActivate {
     | boolean
     | UrlTree {
     if (this.loginService.isLoggedIn == false) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/404']);
       return false;
     }
     return true;

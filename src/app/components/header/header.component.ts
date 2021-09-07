@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
@@ -6,10 +7,15 @@ import { LoginService } from 'src/app/services/login/login.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-  constructor(private loginService: LoginService) {}
+export class HeaderComponent {
+  constructor(private loginService: LoginService, private router: Router) {}
   loginMode: boolean;
-  ngOnInit(): void {
+  ngDoCheck() {
     this.loginMode = this.loginService.isLoggedIn;
+  }
+  onLogOut() {
+    this.loginService.toLogOut();
+    this.loginMode = false;
+    // this.router.navigate(['/home']);
   }
 }

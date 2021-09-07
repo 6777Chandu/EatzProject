@@ -1,0 +1,20 @@
+// Imports - Variables
+@import "../../constants/css/variables.scss";
+
+.page-404 {
+  text-align: center;
+  margin: 150px 0;
+  button {
+    font-size: 18px;
+    text-transform: capitalize;
+    color: $font-white;
+    background-color: $theme-primary;
+    margin-top: 50px;
+    padding: 15px 40px;
+    border: none;
+    cursor: pointer;
+    &:disabled {
+      cursor: default;
+    }
+  }
+}

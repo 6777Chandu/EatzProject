@@ -12,12 +12,17 @@ export class CardTypeService {
   homeItems = [];
   onHomeCard() {
     this.cardHome = true;
-   
+    this.cardOffers = false;
+    this.cardRestaurent = false;
   }
   onOffersCard() {
     this.cardOffers = true;
+    this.cardHome = false;
+    this.cardRestaurent = false;
   }
   onRestaurantCard() {
     this.cardRestaurent = true;
+    this.cardOffers = false;
+    this.cardHome = false;
   }
 }

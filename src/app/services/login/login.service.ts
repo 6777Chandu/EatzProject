@@ -1,10 +1,24 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  constructor() {}
+  constructor(private router: Router) {
+    this.isLoggedIn = false;
+  }
+  isLoggedIn: boolean;
 
-  isLoggedIn: boolean = false;
+  toLogIn() {
+    // console.log('Fired Log In');
+    this.isLoggedIn = true;
+    this.router.navigate(['/orders']);
+  }
+
+  toLogOut() {
+    // console.log('FirFired Log Out');
+    this.isLoggedIn = false;
+    this.router.navigate(['/login']);
+  }
 }

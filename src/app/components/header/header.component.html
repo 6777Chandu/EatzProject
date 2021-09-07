@@ -37,16 +37,31 @@
         </li>
         <li *ngIf="loginMode">
           <a
-            routerLink="restaurents"
+            routerLink="account"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >account</a
+          >
+        </li>
+        <li *ngIf="loginMode">
+          <a style="cursor:pointer"
+            (click)="onLogOut()"
+            >Logout</a
           >
         </li>
       </ul>
       <div *ngIf="loginMode" class="cart">
         <p class="cart-link">cart<sup>3</sup></p>
         <div class="cart-items">No Items in the Cart</div>
+      </div>
+      <!-- ./ cart -->
+      <div *ngIf="!loginMode" class="cart">
+        <a
+          routerLink="login"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Login</a
+        >
       </div>
       <!-- ./ cart -->
     </nav>

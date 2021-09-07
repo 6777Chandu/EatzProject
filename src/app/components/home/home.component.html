@@ -3,9 +3,9 @@
     <div class="col">
       <h1 class="hero-title-top">Food</h1>
       <h1 class="hero-title-bottom">Discover Restaurant & Delicious Food</h1>
-      <form>
-        <input type="text" placeholder="search restaurant" />
-        <button>GO</button>
+      <form (ngSubmit)="onSearch()" #searchForm="ngForm" >
+        <input type="text" placeholder="search restaurant" ngModel name="search" required/>
+        <button [disabled]="!searchForm.valid">GO</button>
       </form>
     </div>
     <!-- ./ col -->
@@ -16,13 +16,15 @@
   </div>
   <!-- ./ container -->
 
-  <div class="location"><i class="fas fa-map-marker-alt"></i>Chennai</div>
+  <div class="location">
+    <i class="fas fa-map-marker-alt"></i>{{ location }}
+  </div>
 </div>
 <!-- ./ hero -->
 
-<div class="container">
-  <!-- #####################   STATIC CONTENT -->
-  <div class="static-content">
+<!-- #####################   STATIC CONTENT -->
+<div class="static-content">
+  <div class="container">
     <div class="blockquote-wrapper">
       <div class="col blockquote">
         <h2>some top restaurants for dining out or in !</h2>
@@ -39,12 +41,62 @@
     </div>
     <!-- ./ blockquote-wrapper -->
   </div>
-  <!-- ./ static-content -->
+  <!-- ./ container -->
 
-  <!-- #####################   END: STATIC CONTENT -->
+  <div class="restaurant-static-section">
+    <div class="restaurant-item">
+      <img src="assets/images/foodImage2.png" alt="foodImg" />
+      <div class="restaurant-item-content">
+        <h1>Fire Water</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse aliquam
+          vitae rem, quos in id unde dignissimos. Nihil, optio exercitationem.
+        </p>
+        <div class="item-methods">
+          <div>
+            <i class="fas fa-map-marker-alt"></i>
+            Jagadamba
+          </div>
+          <button>Book Now <i class="fas fa-long-arrow-alt-right"></i></button>
+        </div>
+      </div>
+      <!-- ./ restaurant-item-content -->
+    </div>
+    <!-- ./ restaurant-item -->
 
-  <!-- #####################   EXPLORE FOODS -->
+    <div class="restaurant-item">
+      <img src="assets/images/foodImage1.png" alt="foodImg" />
+      <div class="restaurant-item-content">
+        <h1>The Wonton</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse aliquam
+          vitae rem, quos in id unde dignissimos. Nihil, optio exercitationem.
+        </p>
+        <div class="item-methods">
+          <div>
+            <i class="fas fa-map-marker-alt"></i>
+            Jagadamba
+          </div>
+          <button>Book Now <i class="fas fa-long-arrow-alt-right"></i></button>
+        </div>
+      </div>
+      <!-- ./ restaurant-item-content -->
+    </div>
+    <!-- ./ restaurant-item -->
 
+    <div class="restaurant-item-link">
+      <i class="fas fa-chevron-circle-right"></i>
+      <p>see more</p>
+    </div>
+  </div>
+  <!-- ./ restaurant-static-section -->
+</div>
+<!-- ./ static-content -->
+
+<!-- #####################   END: STATIC CONTENT -->
+
+<!-- #####################   EXPLORE FOODS -->
+<div class="container">
   <div class="explore-foods">
     <h3>Explore Our Foods</h3>
     <p>
@@ -60,7 +112,7 @@
     <!-- ./ cards-->
   </div>
   <!-- ./ explore-foods-->
-
-  <!-- #####################   END: EXPLORE FOODS -->
 </div>
 <!-- ./ container -->
+
+<!-- #####################   END: EXPLORE FOODS -->

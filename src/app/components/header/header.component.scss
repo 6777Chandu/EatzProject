@@ -16,14 +16,17 @@
 
   nav {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
     h2 {
-      font-size: 40px;
+      font-size: 50px;
+      font-weight: 500;
+    }
+    a.active {
       font-weight: 600;
     }
     ul {
-      margin-left: -20%;
+      // margin-left: -20%;
       li {
         display: inline-block;
         padding: 0 30px;

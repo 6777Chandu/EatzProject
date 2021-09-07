@@ -1,1 +1,30 @@
-<p>restaurents works!</p>
+<div class="container">
+  <div class="page-wrapper">
+    <div class="heading-page restaurents-page">
+      <h2>Restaurants</h2>
+      <form (ngSubmit)="onSearch()" #searchForm="ngForm" >
+        <input
+          type="text"
+          placeholder="search restaurant"
+          ngModel
+          name="search"
+          required
+          #search="ngModel"
+          [(ngModel)]="names"
+        />
+        <button [disabled]="!searchForm.valid">GO</button>
+      </form>
+    </div>
+    <!-- ./ heading-page -->
+    
+    <div class="cards">
+      <app-food-item-card
+        *ngFor="let item of items"
+        [item]="item"
+      ></app-food-item-card>
+    </div>
+    <!-- ./ cards-->
+  </div>
+  <!-- ./ page-wrapper-->
+</div>
+<!-- ./ container -->

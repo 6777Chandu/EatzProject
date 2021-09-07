@@ -13,6 +13,10 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { AuthGuardService } from './services/login/auth-guard.service';
 import { LoginService } from './services/login/login.service';
 import { CardTypeService } from './services/card/card-type.service';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from '@angular/forms';
+import { Page404Component } from './components/page404/page404.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +28,16 @@ import { CardTypeService } from './services/card/card-type.service';
     HeaderComponent,
     FooterComponent,
     OrdersComponent,
+    LoginComponent,
+    Page404Component,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ScrollingModule,
+  ],
   providers: [LoginService, AuthGuardService, CardTypeService],
   bootstrap: [AppComponent],
 })

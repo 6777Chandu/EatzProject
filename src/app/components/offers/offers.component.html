@@ -1,1 +1,17 @@
-<p>offers works!</p>
+<div class="container">
+  <div class="page-wrapper">
+    <div class="heading-page">
+      <h2>offers</h2>
+    </div>
+    <!-- ./ heading-page -->
+    <div class="cards">
+      <app-food-item-card
+        *ngFor="let item of items"
+        [item]="item"
+      ></app-food-item-card>
+    </div>
+    <!-- ./ cards-->
+  </div>
+  <!-- ./ page-wrapper-->
+</div>
+<!-- ./ container -->

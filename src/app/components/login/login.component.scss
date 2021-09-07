@@ -1,0 +1,74 @@
+// Imports - Variables
+@import "../../constants/css/variables.scss";
+
+.login-module-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  .login-col {
+    margin: 100px 0;
+    img {
+      width: 90%;
+    }
+  }
+  .form-module {
+    h2 {
+      font-size: 30px;
+    }
+    width: 70%;
+    margin: 130px auto;
+    form {
+      text-align: center;
+      margin: 50px 0;
+      input {
+        width: 100%;
+        height: 55px;
+        padding: 0 15px;
+        font-size: 16px;
+        border: none;
+        margin: 20px 0;
+        -webkit-box-shadow: -1px 1px 30px -8px rgba(0, 0, 0, 0.22);
+        -moz-box-shadow: -1px 1px 30px -8px rgba(0, 0, 0, 0.22);
+        box-shadow: -1px 1px 30px -8px rgba(0, 0, 0, 0.22);
+        &:focus {
+          outline: none;
+        }
+      }
+
+      input+p{
+        font: {
+          size: 15px;
+        }
+        text-align: left;
+        opacity: .5;
+      }
+
+      button {
+        font-size: 25px;
+        text-transform: uppercase;
+        color: $font-white;
+        background-color: $theme-primary;
+        margin-top: 50px;
+        padding: 15px 40px;
+        border: none;
+        cursor: pointer;
+        &:disabled {
+          cursor: default;
+          opacity: 0.5;
+        }
+      }
+
+      .form-errors{
+        color: $theme-primary;
+        text-align: left;
+      }
+    }
+  }
+}
+
+::placeholder {
+  text-transform: capitalize;
+}
+
+input.ng-invalid.ng-touched  {
+  outline: 2px solid red;
+}

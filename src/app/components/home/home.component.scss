@@ -9,6 +9,7 @@
       flex: 1;
       padding: 100px 0;
       .hero-title-top {
+        margin-left: -6px;
         font: {
           size: 180px;
           weight: 700;
@@ -49,6 +50,10 @@
           border: none;
           min-width: 180px;
           font-weight: 600;
+          &:disabled {
+            cursor: default;
+            opacity: 0.5;
+          }
         }
       }
       img {
@@ -97,6 +102,72 @@
       }
     }
   }
+
+  .restaurant-static-section {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    column-gap: 80px;
+    margin: 100px 0;
+    .restaurant-item-link{
+      i{
+        font: {
+          size: 40px;
+        }
+        margin-bottom: 15px;
+      }
+      font: {
+        size: 25px;
+      }
+      color: $theme-primary;
+      text-align: center;
+      margin: auto auto;
+      cursor: pointer;
+    }
+    .restaurant-item {
+      position: relative;
+      img {
+        width: 100%;
+      }
+     
+      .restaurant-item-content {
+        position: absolute;
+        bottom: 0;
+        background: $theme-primary-transparent;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        height: 200px;
+        padding: 30px;
+        color: $font-white;
+        h1 {
+          font: {
+            size: 45px;
+          }
+        }
+        h1 + p {
+          padding: 10px 40px 50px 0;
+          line-height: 22px;
+          font: {
+            size: 15px;
+            weight: 200;
+          }
+        }
+        .item-methods {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+
+          button {
+            padding: 20px 0;
+            margin-left: 20%;
+            color: $theme-primary;
+            width: 250px;
+            background-color: #fff;
+            font-size: 20px;
+            border: none;
+          }
+        }
+      }
+    }
+  }
 }
 
 .explore-foods {
@@ -116,5 +187,11 @@
   .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
   }
 }
+
+
+// input.ng-invalid.ng-touched  {
+//   outline: 1px solid red;
+// }

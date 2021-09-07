@@ -1,1 +1,53 @@
-<p>orders works!</p>
+<cdk-virtual-scroll-viewport itemSize="265" class="vp">
+<div class="container">
+  <div class="page-wrapper">
+    <div class="heading-page">
+      <h2>Your Orders</h2>
+    </div>
+    <!-- ./ heading-page -->
+    <div class="cards">
+    
+        <div class="order-card" *cdkVirtualFor="let item of items">
+          <div class="order-content-left">
+            <img
+              src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,c_fill/{{
+                item.imageId
+              }}"
+              [alt]="item.restaurant"
+            />
+            <div class="order-content-info">
+              <h2>{{ item.restaurant }}</h2>
+              <h4>{{ item.location }}</h4>
+              <p>Order #{{ item.id }}</p>
+              <ul>
+                <li *ngFor="let subItem of item.orderItems">
+                  {{ subItem.name }} X {{ subItem.quantity }}
+                </li>
+              </ul>
+            </div>
+            <!-- ./ order-content-info -->
+          </div>
+          <!-- ./ order-content-left -->
+          <div class="order-content-right">
+            <h3>
+              {{ item.status | lowercase }} on
+              {{ item.orderDateTime | date: "d LLL y , h:mma" }}
+            </h3>
+            <p>
+              Total: <span>&#8377;{{ item.price.total }}</span>
+            </p>
+            <button>View Details</button>
+            <button *ngIf="item.status === 'ORDERED'">Track Order</button>
+            <button *ngIf="item.status === 'ORDERED'">Cancel Order</button>
+          </div>
+          <!-- ./ order-content-right -->
+        </div>
+        <!-- ./ card -->
+      
+    </div>
+    <!-- ./ cards-->
+  </div>
+  <!-- ./ page-wrapper-->
+</div>
+<!-- ./ container -->
+</cdk-virtual-scroll-viewport>
