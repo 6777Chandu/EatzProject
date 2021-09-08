@@ -1,5 +1,5 @@
-// Imports - Variables
-@import "../../constants/css/variables.scss";
+// Imports -  Variables
+@import "../../theme/css/variables.scss";
 
 .cards {
   display: grid;
@@ -9,36 +9,40 @@
 
 .heading-page {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-form {
-  display: inline-block;
-  width: 60%;
-  padding: 10px;
-  background-color: #fff;
-  -webkit-box-shadow: -1px 1px 30px -8px rgba(0, 0, 0, 0.22);
-  -moz-box-shadow: -1px 1px 30px -8px rgba(0, 0, 0, 0.22);
-  box-shadow: -1px 1px 30px -8px rgba(0, 0, 0, 0.22);
-
-  input {
-    // width: 350px;
-    padding: 18px 30px;
-    border: none;
-    font-size: 20px;
-    &:focus {
-      // outline: none;
-    }
+  grid-template-columns: 1fr 1fr;
+  h2 {
+    position: relative;
+    top: 25px;
   }
+  margin-bottom: 80px;
+  form {
+    justify-self: flex-end;
+    width: 600px;
+    padding: 10px;
+    background-color: #fff;
+    -webkit-box-shadow: -1px 1px 30px -8px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: -1px 1px 30px -8px rgba(0, 0, 0, 0.22);
+    box-shadow: -1px 1px 30px -8px rgba(0, 0, 0, 0.22);
 
-  button {
-    font-size: 28px;
-    margin-left: 10px;
-    padding: 15px;
-    color: #fff;
-    background-color: $theme-primary;
-    border: none;
-    min-width: 180px;
-    font-weight: 600;
+    input {
+      width: 350px;
+      padding: 18px 30px;
+      border: none;
+      font-size: 20px;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      font-size: 28px;
+      margin-left: 10px;
+      padding: 15px;
+      color: #fff;
+      background-color: $theme-primary;
+      border: none;
+      min-width: 180px;
+      font-weight: 600;
+    }
   }
 }

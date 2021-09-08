@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CardTypeService } from 'src/app/services/card/card-type.service';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,7 @@ export class HomeComponent implements OnInit {
   imgPath: string = 'assets/images/LoginImage.png';
   constructor(
     private cardService: CardTypeService,
+    private searchService: SearchService,
     private httpClient: HttpClient,
     private router: Router
   ) {}
@@ -42,7 +44,8 @@ export class HomeComponent implements OnInit {
   @ViewChild('searchForm') searchForm: NgForm;
 
   onSearch() {
-    console.log(this.searchForm);
+    console.log(this.searchForm.value.search);
+    this.searchService.onSearchFromHome(this.searchForm.value.search);
     this.router.navigate(['/restaurents']);
   }
 }

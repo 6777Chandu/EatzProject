@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
   constructor(private router: Router) {
-    this.isLoggedIn = false;
+    this.isLoggedIn = true; // <== Change this to false
   }
   isLoggedIn: boolean;
 

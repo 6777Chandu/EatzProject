@@ -1,12 +1,12 @@
-// Imports - Variables
-@import "../../constants/css/variables.scss";
+// Imports -  Variables
+@import "../../theme/css/variables.scss";
 
 .active-link {
   color: #000 !important;
 }
 
 // Wrapper
-.navbar {
+header {
   padding: 15px 0;
   background-color: $theme-primary;
 
@@ -14,26 +14,25 @@
     color: $navbar-color;
   }
 
-  nav {
+  .navbar-wrapper {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
-    h2 {
-      font-size: 50px;
-      font-weight: 500;
-    }
-    a.active {
-      font-weight: 600;
-    }
-    ul {
-      // margin-left: -20%;
-      li {
-        display: inline-block;
-        padding: 0 30px;
-        font-size: 14px;
-        text-transform: capitalize;
-        a.active {
-          font-weight: 600;
+
+    nav {
+      a.active {
+        font-weight: 600;
+      }
+      ul {
+        // margin-left: -20%;
+        li {
+          display: inline-block;
+          padding: 0 30px;
+          font-size: 14px;
+          text-transform: capitalize;
+          a.active {
+            font-weight: 600;
+          }
         }
       }
     }
@@ -43,10 +42,20 @@
       text-transform: capitalize;
       .cart-link {
         color: $sup-bg;
-        // &:hover .cart-items {
-        //   display: block;
-        // }
+        i {
+          font: {
+            size: 12px;
+          }
+          padding: 0 10px;
+        }
+        cursor: pointer;
+
+        a:before {
+          content: "|";
+          padding: 0 30px;
+        }
       }
+
       sup {
         color: $default-color;
         background-color: $sup-bg;
@@ -55,13 +64,15 @@
         margin-left: 5px;
       }
       .cart-items {
-        display: none;
+        // display: none;
         position: absolute;
+        margin-top: 20px;
         right: 0;
         width: 50%;
         padding: 30px;
         text-align: left;
         background: #f1f1f1;
+        z-index: 10;
       }
     }
   }

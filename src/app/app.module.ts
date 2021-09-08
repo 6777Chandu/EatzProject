@@ -17,6 +17,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { Page404Component } from './components/page404/page404.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { LogoComponent } from './components/logo/logo.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { Page404Component } from './components/page404/page404.component';
     OrdersComponent,
     LoginComponent,
     Page404Component,
+    FilterPipe,
+    LogoComponent,
   ],
   imports: [
     BrowserModule,

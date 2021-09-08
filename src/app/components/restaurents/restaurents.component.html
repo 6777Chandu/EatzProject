@@ -2,7 +2,7 @@
   <div class="page-wrapper">
     <div class="heading-page restaurents-page">
       <h2>Restaurants</h2>
-      <form (ngSubmit)="onSearch()" #searchForm="ngForm" >
+      <form (ngSubmit)="onSearch()" #searchForm="ngForm">
         <input
           type="text"
           placeholder="search restaurant"
@@ -12,17 +12,21 @@
           #search="ngModel"
           [(ngModel)]="names"
         />
-        <button [disabled]="!searchForm.valid">GO</button>
+        <button>GO</button>
       </form>
     </div>
     <!-- ./ heading-page -->
-    
-    <div class="cards">
+
+    <div class="cards" #cards>
       <app-food-item-card
-        *ngFor="let item of items"
+        *ngFor="let item of items | filter: searchName"
         [item]="item"
       ></app-food-item-card>
     </div>
+    <!-- <div *ngIf="emptySearchVal === true">
+      No Items
+    </div> -->
+
     <!-- ./ cards-->
   </div>
   <!-- ./ page-wrapper-->
