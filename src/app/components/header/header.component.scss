@@ -1,6 +1,7 @@
 // Imports -  Variables
 @import "../../theme/css/variables.scss";
 
+// TODO: Always wrap the SCSS within parent class. Please follow the same for all components
 .active-link {
   color: #000 !important;
 }
@@ -43,13 +44,14 @@ header {
       .cart-link {
         color: $sup-bg;
         i {
+          // TODO: Lets discuss the need of this code nippet tmrw
           font: {
             size: 12px;
           }
           padding: 0 10px;
         }
         cursor: pointer;
-
+        // Use SCSS syntax for pseudo selectors
         a:before {
           content: "|";
           padding: 0 30px;

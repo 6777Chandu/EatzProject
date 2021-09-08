@@ -1,4 +1,5 @@
 <div class="container">
+  <!-- TODO: DO you need both container and loginmodulewrapper? -->
   <div class="login-module-wrapper">
     <div class="login-col">
       <img src="assets/images/LoginImage.png" alt="" />
@@ -6,7 +7,7 @@
     <!-- ./ login-col -->
     <div class="login-col form-module">
       <h2>Login into Eatz</h2>
-     
+     <!-- TODO: It would be nice to have a prefix to indicate feature, i.e #form => #loginForm --> -->
       <form (ngSubmit)="onFormSubmit()" #form="ngForm">
         <div class="form-errors" *ngIf="user.access === false">
           <i class="fas fa-arrow-circle-right"></i>

@@ -19,7 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { Page404Component } from './components/page404/page404.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { LogoComponent } from './components/logo/logo.component';
-
+// TODO: Consider using the shared module concept and move shared component and dumb components into a shared module
 @NgModule({
   declarations: [
     AppComponent,

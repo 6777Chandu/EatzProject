@@ -5,11 +5,15 @@
 @import "../assets/fonts/poppins/stylesheet.css";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css";
 
+
+  // TODO: Move common code to style.scss file. only the CSS props w.r.t AppComponent should be added in this file
+
 body {
   font-family: "poppins";
   background-color: $theme-bg;
 }
 ::placeholder {
+  // TODO: Bad coding practice to use !important. Please try using specificity with class/id
   font-family: "poppins" !important;
   color: #849198;
 }

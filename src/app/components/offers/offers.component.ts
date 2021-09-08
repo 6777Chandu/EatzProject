@@ -16,6 +16,7 @@ export class OffersComponent implements OnInit {
 
   ngOnInit(): void {
     this.cardService.onOffersCard();
+    // TODO: Move urls to constants
     this.httpClient
       .get<any>('https://run.mocky.io/v3/a64aee04-fa14-4552-9c47-a789f1364366')
       .subscribe((response) => {
