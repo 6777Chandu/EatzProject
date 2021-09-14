@@ -1,5 +1,5 @@
 <div class="container">
-  <!-- TODO: DO you need both container and loginmodulewrapper? -->
+  <!-- DONE: DO you need both container and loginmodulewrapper? -->
   <div class="login-module-wrapper">
     <div class="login-col">
       <img src="assets/images/LoginImage.png" alt="" />
@@ -7,8 +7,8 @@
     <!-- ./ login-col -->
     <div class="login-col form-module">
       <h2>Login into Eatz</h2>
-     <!-- TODO: It would be nice to have a prefix to indicate feature, i.e #form => #loginForm --> -->
-      <form (ngSubmit)="onFormSubmit()" #form="ngForm">
+     <!-- TODO: It would be nice to have a prefix to indicate feature, i.e #form => #loginForm --> 
+      <form (ngSubmit)="onFormSubmit()" #loginForm="ngForm">
         <div class="form-errors" *ngIf="user.access === false">
           <i class="fas fa-arrow-circle-right"></i>
           Wrong Username/Password
@@ -35,7 +35,7 @@
           />
           <p *ngIf="!pass.valid && pass.touched">Please enter Password</p>
         </div>
-        <button [disabled]="!form.valid" type="submit">Login</button>
+        <button [disabled]="!loginForm.valid" type="submit">Login</button>
       </form>
     </div>
     <!-- ./ login-col -->

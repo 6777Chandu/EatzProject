@@ -1,14 +1,13 @@
-<!-- TODO: Would be nice to take 265 from constnats -->
-<!-- TODO: vp is not a preferred way of naming class/id attributes -->
-<cdk-virtual-scroll-viewport itemSize="265" class="vp">
-<div class="container">
-  <div class="page-wrapper">
-    <div class="heading-page">
-      <h2>Your Orders</h2>
-    </div>
-    <!-- ./ heading-page -->
-    <div class="cards">
-    
+<!-- DONE: Would be nice to take 265 from constnats -->
+<!-- DONE: vp is not a preferred way of naming class/id attributes -->
+<cdk-virtual-scroll-viewport itemSize="{{ scrollHeight }}" class="viewport">
+  <div class="container">
+    <div class="page-wrapper">
+      <div class="heading-page">
+        <h2>{{ title }}</h2>
+      </div>
+      <!-- ./ heading-page -->
+      <div class="cards">
         <div class="order-card" *cdkVirtualFor="let item of items">
           <div class="order-content-left">
             <img
@@ -45,11 +44,10 @@
           <!-- ./ order-content-right -->
         </div>
         <!-- ./ card -->
-      
+      </div>
+      <!-- ./ cards-->
     </div>
-    <!-- ./ cards-->
+    <!-- ./ page-wrapper-->
   </div>
-  <!-- ./ page-wrapper-->
-</div>
-<!-- ./ container -->
+  <!-- ./ container -->
 </cdk-virtual-scroll-viewport>

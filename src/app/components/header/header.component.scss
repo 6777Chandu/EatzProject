@@ -1,11 +1,6 @@
 // Imports -  Variables
 @import "../../theme/css/variables.scss";
 
-// TODO: Always wrap the SCSS within parent class. Please follow the same for all components
-.active-link {
-  color: #000 !important;
-}
-
 // Wrapper
 header {
   padding: 15px 0;
@@ -13,6 +8,10 @@ header {
 
   a {
     color: $navbar-color;
+  }
+
+  .active-link {
+    color: #000 !important;
   }
 
   .navbar-wrapper {
@@ -51,30 +50,59 @@ header {
           padding: 0 10px;
         }
         cursor: pointer;
-        // Use SCSS syntax for pseudo selectors
-        a:before {
-          content: "|";
-          padding: 0 30px;
+
+        a {
+          &:before {
+            content: "|";
+            padding: 0 30px;
+          }
         }
       }
 
       sup {
         color: $default-color;
         background-color: $sup-bg;
-        padding: 2px 5px;
+        width: 12px;
+        height: 12px;
+        display: inline-block;
+        // padding: 2px 5px;
         border-radius: 50%;
+        text-align: center;
+        padding: 0 3px;
+        padding-top:5px;
+        margin-top: -10px;
         margin-left: 5px;
       }
       .cart-items {
-        // display: none;
         position: absolute;
         margin-top: 20px;
         right: 0;
-        width: 50%;
-        padding: 30px;
+        width: 80%;
+        padding: 10px;
         text-align: left;
         background: #f1f1f1;
         z-index: 10;
+        p {
+          text-align: center;
+          padding: 30px;
+        }
+        ul {
+          li {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px 20px;
+            margin: 10px 0;
+            span {
+              text-align: right;
+              &:before {
+                content: "x";
+                padding: 0px 10px;
+                font-size: 10px;
+              }
+            }
+          }
+        }
       }
     }
   }

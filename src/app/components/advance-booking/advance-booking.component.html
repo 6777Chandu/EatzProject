@@ -1,0 +1,63 @@
+<div class="wrapper">
+  <hr />
+  <h1>advanced booking</h1>
+  
+  <form
+    [formGroup]="advanceBookingForm"
+    (ngSubmit)="onAdvanceBookingFormSubmit()"
+  >
+  <div class="form-wrapper">
+    <input
+      type="text"
+      placeholder="search restaurant"
+      name="search"
+      formControlName="name"
+    />
+    <button type="submit" [disabled]="!advanceBookingForm.valid">GO</button>
+
+  </div> <!-- ./ form-wrapper -->
+
+  <p *ngIf="!advanceBookingForm.get('name').valid && advanceBookingForm.get('name').touched">Please enter Restaurant Name</p>
+
+
+    <div class="booking-options">
+      <div class="booking-item">
+        <div class="label">
+          <label for="date">Date</label>
+        </div>
+        <select name="" id="" formControlName="date">
+          <option value="{{ i }}" *ngFor="let i of myDateRange">{{ i }}</option>
+        </select>
+      </div>
+      <!-- ./ booking-item -->
+
+      <div class="booking-item">
+        <div class="label">
+          <label for="date">Time</label>
+        </div>
+        <select name="" id="" formControlName="time">
+          <option value="{{ i }}" *ngFor="let i of mySortedTimeRange">
+            {{ i }}
+          </option>
+        </select>
+      </div>
+      <!-- ./ booking-item -->
+
+      <div class="booking-item">
+        <div class="label">
+          <label for="date">Guests</label>
+        </div>
+        <select name="" id="" formControlName="guests">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4+">4+</option>
+        </select>
+      </div>
+      <!-- ./ booking-item -->
+    </div>
+    <!-- ./ booking-options -->
+  </form>
+
+</div>
+<!-- ./ wrapper -->

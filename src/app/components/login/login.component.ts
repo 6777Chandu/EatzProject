@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  @ViewChild('form') loginForm: NgForm;
+  @ViewChild('loginForm') loginForm: NgForm;
 
   onFormSubmit() {
     if (

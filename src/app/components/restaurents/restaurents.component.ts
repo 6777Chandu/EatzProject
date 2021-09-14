@@ -7,8 +7,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { CardTypeService } from 'src/app/services/card/card-type.service';
-import { SearchService } from 'src/app/services/search.service';
+import { SearchService } from 'src/app/services/search/search.service';
+import { AppConstants } from 'src/app/constants/app.constants';
 
 @Component({
   selector: 'app-restaurents',
@@ -16,11 +16,15 @@ import { SearchService } from 'src/app/services/search.service';
   styleUrls: ['./restaurents.component.scss'],
 })
 export class RestaurentsComponent implements OnInit {
+  title = AppConstants.CONSTANTS.PAGE_TITLES.RESTAURANTS_PAGE;
   items = [];
+  cardType="cardRestaurent"
+  len = 0;
+  showError;
   @ViewChild('searchForm') searchForm: NgForm;
   @ViewChild('cards') cardsSel: ElementRef;
   constructor(
-    private cardService: CardTypeService,
+
     private searchService: SearchService,
     private httpClient: HttpClient,
     private renderer: Renderer2
@@ -30,26 +34,38 @@ export class RestaurentsComponent implements OnInit {
   searchName = this.searchService.searchValue;
 
   ngOnInit(): void {
-    this.cardService.onRestaurantCard();
+  
     this.httpClient
-      .get<any>('https://run.mocky.io/v3/59b84146-7de3-4794-8534-8979236ec0bc')
+      .get<any>(AppConstants.CONSTANTS.API_URLS.RESTAURANTS_API)
       .subscribe((response) => {
         this.items = response.result;
         console.log(this.items);
       });
+      this.showError = false;
   }
 
-  ngAfterViewInit() {
-    console.log('search', this.cardsSel);
-    console.log('search', this.cardsSel.nativeElement.childElementCount);
+  ngDoCheck() {
+    // console.log('Length', this.searchService.itemz.length);
+    // if (this.searchService.itemz.length === 0) {
+    //   this.showError = true;
+    // }
   }
 
- 
+  ngAfterViewChecked(){
+    console.log('Length', this.searchService.itemz.length);
+    this.len = this.searchService.itemz.length;
+  }
+
   onSearch() {
     this.searchName = this.searchForm.value.search;
-    this.ngAfterViewInit();
+
     // console.log("Search", this.cardsSel);
     // console.log("Search", this.renderer.);
-    console.log('Items', this.items.length);
+
+    
+    // console.log('Items', this.items.length);
+    // if (this.len === 0) {
+    //   this.showError = true;
+    // } 
   }
 }

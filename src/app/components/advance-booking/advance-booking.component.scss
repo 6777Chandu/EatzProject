@@ -1,0 +1,101 @@
+// Imports -  Variables
+@import "../../theme/css/variables.scss";
+
+.wrapper {
+  background-color: #fff;
+  text-align: center;
+  padding: 100px 30px;
+
+  hr {
+    width: 10%;
+    height: 15px;
+    margin-bottom: 20px;
+    background-color: $theme-primary;
+    border: none;
+  }
+
+  h1 {
+    color: $dark-blue;
+    font: {
+      size: 40px;
+      weight: 600;
+    }
+  }
+
+  form{
+    p{
+      padding:20px 0;
+      opacity:.5;
+    }
+  }
+
+  .form-wrapper {
+    display: inline-block;
+    padding: 10px;
+    background-color: #fff;
+    -webkit-box-shadow: -1px 1px 30px -8px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: -1px 1px 30px -8px rgba(0, 0, 0, 0.22);
+    box-shadow: -1px 1px 30px -8px rgba(0, 0, 0, 0.22);
+    margin-top: 50px;
+    input {
+      width: 350px;
+      padding: 18px 30px;
+      border: none;
+      font-size: 20px;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    input.ng-invalid.ng-touched  {
+      outline: 2px solid red;
+    }
+    
+
+    button {
+      font-size: 28px;
+      margin-left: 10px;
+      padding: 15px;
+      color: #fff;
+      background-color: $theme-primary;
+      border: none;
+      min-width: 180px;
+      font-weight: 600;
+      &:disabled {
+        cursor: default;
+        opacity: 0.5;
+      }
+    }
+
+
+  }
+
+  .booking-options {
+    display: flex;
+    justify-content: center;
+    .booking-item {
+      padding: 20px 50px;
+      margin: 20px 0;
+      .label label {
+        color: $dark-blue;
+        padding: 30px;
+        font: {
+          size: 15x;
+          weight: 600;
+        }
+
+        select {
+          margin: 50px;
+          width: 150px;
+          padding: 5px 35px 5px 5px;
+          font-size: 16px;
+          border: 1px solid #ccc;
+          height: 34px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+        }
+      }
+    }
+  }
+}

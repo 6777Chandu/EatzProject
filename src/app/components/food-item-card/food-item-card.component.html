@@ -8,7 +8,10 @@
     }}"
     [alt]="item.name"
   />
-  <div *ngIf="cardHome" class="item-card-home">
+<!-- <div [ngSwitch]="color">
+  <div *ngSwitchCase="'red'" -->
+  <div [ngSwitch]="cardType">
+  <div *ngSwitchCase="'cardHome'" class="item-card-home">
     <div class="meta">
       <h2>{{ item.name }}</h2>
       <h2>&#8377; {{ item.price.discountPrice }}</h2>
@@ -19,7 +22,7 @@
   </div>
   <!-- ./ item-card-home -->
 
-  <div *ngIf="cardRestaurent" class="item-card-restaurent">
+  <div *ngSwitchCase="'cardRestaurent'" class="item-card-restaurent">
     <div class="meta">
       <div class="restaurant-info-1">
         <h2>{{ item.name }}</h2>
@@ -37,7 +40,7 @@
   </div>
   <!-- ./ item-card-restaurent -->
 
-  <div *ngIf="cardOffers" class="item-card-offers">
+  <div *ngSwitchCase="'cardOffers'" class="item-card-offers">
     <div class="meta">
       <h2>{{ item.name }}</h2>
       <h2>&#8377; {{ item.price.discountPrice }}</h2>
@@ -50,5 +53,7 @@
     <div style="clear: both"></div>
   </div>
   <!-- ./ item-card-Offers -->
+
+</div> <!-- ./ switch -->
 </div>
 <!-- ./ item-card-->

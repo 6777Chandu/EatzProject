@@ -3,9 +3,15 @@
     <div class="col">
       <!-- TODO: Use a hierarchical heading tags. Use h2 tag for elements after h1 tags. -->
       <h1 class="hero-title-top">Food</h1>
-      <h1 class="hero-title-bottom">Discover Restaurant & Delicious Food</h1>
-      <form (ngSubmit)="onSearch()" #searchForm="ngForm" >
-        <input type="text" placeholder="search restaurant" ngModel name="search" required/>
+      <h2 class="hero-title-bottom">Discover Restaurant & Delicious Food</h2>
+      <form (ngSubmit)="onSearch()" #searchForm="ngForm">
+        <input
+          type="text"
+          placeholder="search restaurant"
+          ngModel
+          name="search"
+          required
+        />
         <button [disabled]="!searchForm.valid">GO</button>
       </form>
     </div>
@@ -25,7 +31,6 @@
 <!-- Suggestion: You can consider using section tags as well. -->
 <!-- #####################   STATIC CONTENT -->
 <div class="static-content">
-  <!--TODO: multiple divs with no specific purpose. Keep the HTML structure as simple as possible -->
   <div class="container">
     <div class="blockquote-wrapper">
       <div class="col blockquote">
@@ -97,6 +102,14 @@
 
 <!-- #####################   END: STATIC CONTENT -->
 
+<section class="advance-booking-wrapper">
+  <div class="container">
+    <div class="advance-booking">
+      <app-advance-booking></app-advance-booking>
+    </div>
+  </div>
+</section>
+
 <!-- #####################   EXPLORE FOODS -->
 <div class="container">
   <div class="explore-foods">
@@ -109,6 +122,7 @@
       <app-food-item-card
         *ngFor="let item of items"
         [item]="item"
+        [cardType]="cardType"
       ></app-food-item-card>
     </div>
     <!-- ./ cards-->

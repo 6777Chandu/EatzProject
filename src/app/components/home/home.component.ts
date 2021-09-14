@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CardTypeService } from 'src/app/services/card/card-type.service';
-import { SearchService } from 'src/app/services/search.service';
+
+import { SearchService } from 'src/app/services/search/search.service';
+import { AppConstants } from 'src/app/constants/app.constants'
 
 @Component({
   selector: 'app-home',
@@ -14,24 +15,25 @@ export class HomeComponent implements OnInit {
   items = [];
   imgPath: string = 'assets/images/LoginImage.png';
   constructor(
-    private cardService: CardTypeService,
     private searchService: SearchService,
     private httpClient: HttpClient,
     private router: Router
   ) {}
 
   location: string;
+  cardType = "cardHome";
 
   ngOnInit(): void {
-    this.cardService.onHomeCard();
+   
+   
     this.httpClient
-      .get<any>('https://run.mocky.io/v3/a64aee04-fa14-4552-9c47-a789f1364366')
+      .get<any>(AppConstants.CONSTANTS.API_URLS.OFFERS_API)
       .subscribe((response) => {
         this.items = response.result;
       });
 
     this.httpClient
-      .get<any>('https://geolocation-db.com/json/')
+      .get<any>(AppConstants.CONSTANTS.API_URLS.LOCATION_API)
       .subscribe((response) => {
         if (response.city === null) {
           this.location = response.country_name;

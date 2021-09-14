@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CardTypeService } from 'src/app/services/card/card-type.service';
+import { AppConstants } from 'src/app/constants/app.constants'
 
 @Component({
   selector: 'app-orders',
@@ -10,6 +11,8 @@ import { CardTypeService } from 'src/app/services/card/card-type.service';
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
+  title = AppConstants.CONSTANTS.PAGE_TITLES.ORDERS_PAGE;
+  scrollHeight = AppConstants.CONSTANTS.VIRTUAL_SCROLL_HEIGHT;
   items = [];
   constructor(
     private cardService: CardTypeService,
@@ -17,9 +20,9 @@ export class OrdersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.cardService.onOffersCard();
+    // this.cardService.onOffersCard();
     this.httpClient
-      .get<any>('https://run.mocky.io/v3/69cd6951-b66d-483f-bece-278ac4fd91a6')
+      .get<any>(AppConstants.CONSTANTS.API_URLS.ORDERS_API)
       .subscribe((response) => {
         this.items = response.orders;
         // console.log(this.items);

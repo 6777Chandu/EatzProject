@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SearchService } from '../services/search.service';
+import { SearchService } from '../../services/search/search.service';
 
 @Pipe({
   name: 'filter',
@@ -17,10 +17,9 @@ export class FilterPipe implements PipeTransform {
         items.push(item);
       }
     }
-    if (items.length === 0) {
-      console.log("Fired")
-      this.searchService.val = "allow"
-    }
+
+    console.log("Items Copied")
+    this.searchService.itemz = items;
     return items;
   }
 }

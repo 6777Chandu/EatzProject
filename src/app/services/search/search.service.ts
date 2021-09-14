@@ -5,11 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class SearchService {
   constructor() {}
-
+  itemz = [];
   searchValue: string = '';
   emptySearch: boolean;
-  val:string = ''
-  ngDoCheck(){
+
+  val: string = '';
+  ngDoCheck() {
     this.emptySearch = false;
   }
 

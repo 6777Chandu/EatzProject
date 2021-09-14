@@ -108,8 +108,8 @@
     grid-template-columns: 2fr 2fr 1fr;
     column-gap: 80px;
     margin: 100px 0;
-    .restaurant-item-link{
-      i{
+    .restaurant-item-link {
+      i {
         font: {
           size: 40px;
         }
@@ -128,7 +128,7 @@
       img {
         width: 100%;
       }
-     
+
       .restaurant-item-content {
         position: absolute;
         bottom: 0;
@@ -172,7 +172,8 @@
 
 .explore-foods {
   text-align: center;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
   padding: 100px 0;
   h3 {
     font-size: 35px;
@@ -191,6 +192,14 @@
   }
 }
 
+.advance-booking-wrapper {
+  padding: 100px 0;
+  background-color: #fdedde;
+  .advance-booking {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
 
 // input.ng-invalid.ng-touched  {
 //   outline: 1px solid red;

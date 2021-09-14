@@ -1,6 +1,12 @@
-import { Component } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
-import { CartDataService } from 'src/app/services/cart-data.service';
+import { CartDataService } from 'src/app/services/cart/cart-data.service';
 import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
@@ -8,16 +14,27 @@ import { LoginService } from 'src/app/services/login/login.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private router: Router,
     private cartService: CartDataService
   ) {}
-  CartItems = this.cartService.cartItems;
+  CartItems = this.cartService.onShowCartItems();
+  errorMsg = true;
+  cartCount = 0;
   loginMode: boolean;
+
+  ngOnInit() {
+    
+  }
+
   ngDoCheck() {
     this.loginMode = this.loginService.isLoggedIn;
+    this.cartCount = this.CartItems.length;
+    if(this.cartCount > 0){
+      this.errorMsg = false
+    }
   }
   onLogOut() {
     this.loginService.toLogOut();

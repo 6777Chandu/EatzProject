@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { CardTypeService } from 'src/app/services/card/card-type.service';
+import { AppConstants } from 'src/app/constants/app.constants'
 
 @Component({
   selector: 'app-offers',
@@ -9,16 +9,16 @@ import { CardTypeService } from 'src/app/services/card/card-type.service';
 })
 export class OffersComponent implements OnInit {
   items = [];
+  cardType="cardOffers"
+  title = AppConstants.CONSTANTS.PAGE_TITLES.OFFER_PAGE;
   constructor(
-    private cardService: CardTypeService,
     private httpClient: HttpClient
   ) {}
 
   ngOnInit(): void {
-    this.cardService.onOffersCard();
-    // TODO: Move urls to constants
+
     this.httpClient
-      .get<any>('https://run.mocky.io/v3/a64aee04-fa14-4552-9c47-a789f1364366')
+      .get<any>(AppConstants.CONSTANTS.API_URLS.OFFERS_API)
       .subscribe((response) => {
         this.items = response.result;
         console.log(this.items);
