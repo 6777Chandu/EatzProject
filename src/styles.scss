@@ -1,18 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
 // Imports - Resets, Variables, Fonts
-@import "./app/theme/css/resets.scss";
-@import "./app/theme/css/variables.scss";
+@import "./app/theme/scss/resets.scss";
+@import "./app/theme/scss/variables.scss";
 @import "./assets/fonts/georgia/stylesheet.css";
 @import "./assets/fonts/poppins/stylesheet.css";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css";
 
 body {
-  font-family: "poppins";
+  font-family: map-get($font-family, "default");
   background-color: $theme-bg;
 }
 ::placeholder {
-  font-family: "poppins";
+  font-family: map-get($font-family, "default");
   color: #849198;
 }
 

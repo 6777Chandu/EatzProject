@@ -18,8 +18,8 @@ export class FilterPipe implements PipeTransform {
       }
     }
 
-    console.log("Items Copied")
-    this.searchService.itemz = items;
+    // console.log("Items Copied")
+    this.searchService.items = items;
     return items;
   }
 }

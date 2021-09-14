@@ -1,15 +1,16 @@
 // Imports -  Variables
-@import "../../theme/css/variables.scss";
+@import "../../theme/scss/variables.scss";
 
 .wrapper {
   background-color: #fff;
   text-align: center;
   padding: 100px 30px;
 
-  hr {
+  .border-bottom {
     width: 10%;
     height: 15px;
-    margin-bottom: 20px;
+    margin: 0 auto;
+    margin-bottom: 25px;
     background-color: $theme-primary;
     border: none;
   }
@@ -22,10 +23,10 @@
     }
   }
 
-  form{
-    p{
-      padding:20px 0;
-      opacity:.5;
+  form {
+    p {
+      padding: 20px 0;
+      opacity: 0.5;
     }
   }
 
@@ -47,10 +48,9 @@
       }
     }
 
-    input.ng-invalid.ng-touched  {
+    input.ng-invalid.ng-touched {
       outline: 2px solid red;
     }
-    
 
     button {
       font-size: 28px;
@@ -66,8 +66,6 @@
         opacity: 0.5;
       }
     }
-
-
   }
 
   .booking-options {
@@ -76,7 +74,7 @@
     .booking-item {
       padding: 20px 50px;
       margin: 20px 0;
-      .label label {
+      .form-label label {
         color: $dark-blue;
         padding: 30px;
         font: {

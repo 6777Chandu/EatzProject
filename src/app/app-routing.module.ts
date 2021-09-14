@@ -5,7 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { OffersComponent } from './components/offers/offers.component';
 import { OrdersComponent } from './components/orders/orders.component';
 // TODO:Lets name is ErrorPageCompoent. It is good practice to avoid numbers in component class name
-import { ErrorPageComponent } from './components/page404/errorpage.component';
+import { ErrorPageComponent } from './components/errorPage/errorpage.component';
 import { RestaurentsComponent } from './components/restaurents/restaurents.component';
 import { AuthGuardService } from './services/login/auth-guard.service';
 

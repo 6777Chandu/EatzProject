@@ -1,8 +1,6 @@
-import { DatePipe } from '@angular/common';
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService } from './services/alert/alert.service';
-
 
 @Component({
   selector: 'app-root',
@@ -11,17 +9,14 @@ import { AlertService } from './services/alert/alert.service';
   // encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
- 
   title = 'EatzProject';
-  constructor( public router:Router, private alertService:AlertService){}
+  constructor(public router: Router, private alertService: AlertService) {}
   showAlert = false;
   ngOnInit() {
-    console.log(this.alertService.showAlert)
+    console.log(this.alertService.showAlert);
   }
 
-  ngDoCheck(){
+  ngDoCheck() {
     this.showAlert = this.alertService.showAlert;
   }
-
-  
 }

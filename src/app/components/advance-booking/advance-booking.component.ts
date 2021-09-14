@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/services/alert/alert.service';
+import { AppConstants } from 'src/app/constants/app.constants';
 
 @Component({
   selector: 'app-advance-booking',
@@ -9,34 +10,42 @@ import { AlertService } from 'src/app/services/alert/alert.service';
   styleUrls: ['./advance-booking.component.scss'],
 })
 export class AdvanceBookingComponent implements OnInit {
-  constructor(private alertService:AlertService) {}
-  showAlert = true;
+  constructor(private alertService: AlertService) {}
+
+  advanceBookingTitle: string =
+    AppConstants.CONSTANTS.PAGES.HOME_PAGE.PAGE_COMPONENTS_TITLE
+      .ADVANCE_BOOKING;
+  advanceBookingError: string =
+    AppConstants.CONSTANTS.PAGES.HOME_PAGE.PAGE_COMPONENTS_TITLE
+      .ADVANCE_BOOKING_ERROR;
+
+  // showAlert = true;
   advanceBookingForm: FormGroup;
   myDateRange = [];
-  myTimeRange = [
-    '9 AM to 11 AM',
-    '12 PM to 2 PM',
-    '3 PM to 5 PM',
-    '7 PM to 9 PM',
-    'No Slots',
-  ];
+  myTimeRange =
+    AppConstants.CONSTANTS.PAGES.HOME_PAGE.PAGE_COMPONENTS_TITLE
+      .ADVANCE_BOOKING_TIMING;
+  guests = AppConstants.CONSTANTS.PAGES.HOME_PAGE.PAGE_COMPONENTS_TITLE
+  .ADVANCE_BOOKING_GUESTS;
   mySortedTimeRange = [];
-  // camelCase??
-  Mydate = new Date();
-  //Significance of Mydate variable?
-  //constants??. constants which will not change are usually written in CAPS_FORMAT 
-  format = 'dd';
-  locale = 'en-US';
-  formattedDate = formatDate(this.Mydate, 'dd', this.locale);
-  formattedDateByYear = formatDate(this.Mydate, 'yyyy', this.locale);
-  formattedDateByMonth = formatDate(this.Mydate, 'mm', this.locale);
-  formattedDateByTime = formatDate(this.Mydate, 'HH:mm', this.locale);
-  minRange = 0;
-  maxRange = 0;
+
+  myDate = new Date();
+
+  locale =
+    AppConstants.CONSTANTS.PAGES.HOME_PAGE.PAGE_COMPONENTS_TITLE
+      .ADVANCE_BOOKING_OPTIONS.LOCALE;
+
+  formattedDate = formatDate(this.myDate, 'dd', this.locale);
+  formattedDateByYear = formatDate(this.myDate, 'yyyy', this.locale);
+  formattedDateByMonth = formatDate(this.myDate, 'mm', this.locale);
+  formattedDateByTime = formatDate(this.myDate, 'HH:mm', this.locale);
+  minRange: number = 0;
+  maxRange: number = 0;
+  // temp: Temporary Variable that holds the previous data of Array
   temp = [];
 
   ngOnInit(): void {
-    // Move to shorter functions. Too much of unrelated logic in a single function
+    // DONE: Move to shorter functions. Too much of unrelated logic in a single function
     const maxDate = new Date(
       parseInt(this.formattedDateByYear),
       parseInt(this.formattedDateByMonth),
@@ -52,33 +61,35 @@ export class AdvanceBookingComponent implements OnInit {
       this.myDateRange.push(i);
     }
 
-    // if (+this.formattedDate > +this.formattedDate + 1) {
-    //   console.log('Hi There !');
-    // }
-    
-    // Why not store the parsed values into variables to improve efficiency?
-    if (
-      parseInt(this.formattedDateByTime) >= 0 &&
-      parseInt(this.formattedDateByTime) <= 8
-    ) {
+    this.onCheckMinAndMaxRanges();
+
+    this.advanceBookingForm = new FormGroup({
+      name: new FormControl(null, Validators.required),
+      date: new FormControl(this.formattedDate),
+      time: new FormControl(this.mySortedTimeRange[0]),
+      guests: new FormControl('1'),
+    });
+
+    this.temp = this.mySortedTimeRange;
+
+    this.onformValueChange();
+  }
+
+  /**
+   * @description Checks and Gives te Min and Max Range for Time Preview for Future Dates
+   */
+  onCheckMinAndMaxRanges() {
+    const parsedDateByTime = parseInt(this.formattedDateByTime);
+    if (parsedDateByTime <= 8) {
       this.minRange = 0;
       this.maxRange = 3;
-    } else if (
-      parseInt(this.formattedDateByTime) >= 0 &&
-      parseInt(this.formattedDateByTime) <= 11
-    ) {
+    } else if (parsedDateByTime <= 11) {
       this.minRange = 1;
       this.maxRange = 3;
-    } else if (
-      parseInt(this.formattedDateByTime) >= 0 &&
-      parseInt(this.formattedDateByTime) <= 14
-    ) {
+    } else if (parsedDateByTime <= 14) {
       this.minRange = 2;
       this.maxRange = 3;
-    } else if (
-      parseInt(this.formattedDateByTime) >= 0 &&
-      parseInt(this.formattedDateByTime) <= 19
-    ) {
+    } else if (parsedDateByTime <= 19) {
       this.minRange = 3;
       this.maxRange = 3;
     } else {
@@ -89,49 +100,39 @@ export class AdvanceBookingComponent implements OnInit {
     for (let j = this.minRange; j <= this.maxRange; j++) {
       this.mySortedTimeRange.push(this.myTimeRange[j]);
     }
-    console.log('hi There');
-    console.log(this.myDateRange);
-    console.log(this.formattedDateByTime);
-    console.log('Hi', this.mySortedTimeRange);
+  }
 
-    this.advanceBookingForm = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      date: new FormControl(this.formattedDate),
-      // time: new FormControl('9 AM to 11 AM'),
-      time: new FormControl(this.mySortedTimeRange[0]),
-      guests: new FormControl('1'),
-    });
-
-    this.temp = this.mySortedTimeRange
-    console.log(this.temp)
-
+  /**
+   * On Change of Advance Booking 'date' ValueChange
+   */
+  onformValueChange() {
     this.advanceBookingForm.get('date').valueChanges.subscribe((value) => {
       if (value === this.formattedDate) {
         this.mySortedTimeRange = this.temp;
-        console.log(this.mySortedTimeRange)
+        console.log(this.mySortedTimeRange);
         this.advanceBookingForm.patchValue({
-          time: this.mySortedTimeRange[0]
+          time: this.mySortedTimeRange[0],
         });
-        
       } else {
         this.mySortedTimeRange = [];
         for (let j = 0; j <= 3; j++) {
-          this.mySortedTimeRange.push(this.myTimeRange[j]);  
+          this.mySortedTimeRange.push(this.myTimeRange[j]);
         }
 
         this.advanceBookingForm.patchValue({
-          time: this.mySortedTimeRange[0]
+          time: this.mySortedTimeRange[0],
         });
       }
     });
-
-    // if()
   }
 
+  /**
+   * @description On Advance Booking Form Submit, opens alertBox
+   */
   onAdvanceBookingFormSubmit() {
     console.log(this.advanceBookingForm.value);
     this.alertService.onBooking();
-    this.alertService.onOpenAlert();  
-   console.log(this.alertService.showAlert)
+    this.alertService.onOpenAlert();
+    console.log(this.alertService.showAlert);
   }
 }

@@ -6,12 +6,12 @@
     </div>
     <!-- ./ login-col -->
     <div class="login-col form-module">
-      <h2>Login into Eatz</h2>
-     <!-- TODO: It would be nice to have a prefix to indicate feature, i.e #form => #loginForm --> 
+      <h2>{{ title }}</h2>
+     <!-- DONE: It would be nice to have a prefix to indicate feature, i.e #form => #loginForm --> 
       <form (ngSubmit)="onFormSubmit()" #loginForm="ngForm">
         <div class="form-errors" *ngIf="user.access === false">
           <i class="fas fa-arrow-circle-right"></i>
-          Wrong Username/Password
+          {{ formErrorMessage }}
         </div>
         <div>
           <input
@@ -22,7 +22,7 @@
             required
             #name="ngModel"
           />
-          <p *ngIf="!name.valid && name.touched">Please enter Username</p>
+          <p *ngIf="!name.valid && name.touched">{{ formUserError }}</p>
         </div>
         <div>
           <input
@@ -33,9 +33,9 @@
             required
             #pass = "ngModel"
           />
-          <p *ngIf="!pass.valid && pass.touched">Please enter Password</p>
+          <p *ngIf="!pass.valid && pass.touched">{{ formPassError }}</p>
         </div>
-        <button [disabled]="!loginForm.valid" type="submit">Login</button>
+        <button [disabled]="!loginForm.valid" type="submit">{{ formButtonName }}</button>
       </form>
     </div>
     <!-- ./ login-col -->

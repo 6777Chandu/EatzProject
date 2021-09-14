@@ -11,9 +11,10 @@ import { AppConstants } from 'src/app/constants/app.constants'
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
+
 export class HomeComponent implements OnInit {
   items = [];
-  imgPath: string = 'assets/images/LoginImage.png';
+  imgPath: string = AppConstants.CONSTANTS.PAGES.HOME_PAGE.HERO_IMG_PATH;
   constructor(
     private searchService: SearchService,
     private httpClient: HttpClient,
@@ -21,19 +22,18 @@ export class HomeComponent implements OnInit {
   ) {}
 
   location: string;
-  cardType = "cardHome";
+  cardType:string = "cardHome";
 
   ngOnInit(): void {
    
-   
     this.httpClient
-      .get<any>(AppConstants.CONSTANTS.API_URLS.OFFERS_API)
+      .get<any>(AppConstants.CONSTANTS.PAGES.OFFER_PAGE.OFFERS_API)
       .subscribe((response) => {
         this.items = response.result;
       });
 
     this.httpClient
-      .get<any>(AppConstants.CONSTANTS.API_URLS.LOCATION_API)
+      .get<any>(AppConstants.CONSTANTS.PAGES.HOME_PAGE.API.LOCATION_API)
       .subscribe((response) => {
         if (response.city === null) {
           this.location = response.country_name;
@@ -45,8 +45,11 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('searchForm') searchForm: NgForm;
 
+  /**
+   * @description On Search, It takes value from the form and supplies to Search Service and Navigates to Restaurents page to show results
+   */
   onSearch() {
-    console.log(this.searchForm.value.search);
+    // console.log(this.searchForm.value.search);
     this.searchService.onSearchFromHome(this.searchForm.value.search);
     this.router.navigate(['/restaurents']);
   }

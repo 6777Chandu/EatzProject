@@ -12,14 +12,13 @@ import { FooterComponent } from './components/footer/footer.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { AuthGuardService } from './services/login/auth-guard.service';
 import { LoginService } from './services/login/login.service';
-import { CardTypeService } from './services/card/card-type.service';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FilterPipe } from './pipes/filter/filter.pipe';
 import { LogoComponent } from './components/logo/logo.component';
-import { ErrorPageComponent } from './components/page404/errorpage.component';
+import { ErrorPageComponent } from './components/errorPage/errorpage.component';
 import { AdvanceBookingComponent } from './components/advance-booking/advance-booking.component';
 import { AlertBoxComponent } from './components/alert-box/alert-box.component';
 
@@ -47,9 +46,9 @@ import { AlertBoxComponent } from './components/alert-box/alert-box.component';
     AppRoutingModule,
     HttpClientModule,
     ScrollingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [LoginService, AuthGuardService, CardTypeService],
+  providers: [LoginService, AuthGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

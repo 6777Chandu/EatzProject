@@ -2,9 +2,13 @@
 <header>
   <div class="container">
     <div class="navbar-wrapper">
-      <!-- Logos in header always take user to home page. Checkout real time apps like facebook -->
-      <a routerLink="">
-        <app-logo></app-logo>
+      <!-- DONE: Logos in header always take user to home page. Checkout real time apps like facebook -->
+      <a
+        routerLink="home"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <app-logo> </app-logo>
       </a>
       <nav>
         <!-- // DONE: Preferrably nav tags have only ul li  -->
@@ -34,27 +38,29 @@
               >restaurents</a
             >
           </li>
-          <!-- why not ngcontainer and ngif instead of repeating the ngIf -->
-          <li *ngIf="loginMode">
-            <a
-              routerLink="orders"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >orders</a
-            >
-          </li>
-          <li *ngIf="loginMode">
-            <a
-              routerLink="account"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >account</a
-            >
-          </li>
+          <!-- DONE: why not ngcontainer and ngif instead of repeating the ngIf -->
+          <ng-container *ngIf="isLoginMode">
+            <li>
+              <a
+                routerLink="orders"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                >orders</a
+              >
+            </li>
+            <li>
+              <a
+                routerLink="account"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                >account</a
+              >
+            </li>
+          </ng-container>
         </ul>
       </nav>
 
-      <div *ngIf="loginMode" class="cart">
+      <div *ngIf="isLoginMode" class="cart">
         <p class="cart-link" (click)="onClickShowCart()">
           cart<sup>{{ cartCount }}</sup
           ><i class="fas fa-chevron-down"></i>
@@ -62,16 +68,16 @@
         </p>
         <div class="cart-items" *ngIf="showCart">
           <ul>
-            <li *ngFor="let i of CartItems">
-              <h3>{{ i.title }}</h3>
-              <span>{{ i.val }}</span>
+            <li *ngFor="let item of CartItems; let idx = index">
+              <h3>{{ item.title }}</h3>
+              <span>{{ item.val }}</span>
             </li>
           </ul>
-          <p *ngIf="errorMsg">No Items in the Cart</p>
+          <p *ngIf="isCartEmpty">No Items in the Cart</p>
         </div>
       </div>
       <!-- ./ cart -->
-      <div *ngIf="!loginMode" class="cart">
+      <div *ngIf="!isLoginMode" class="cart">
         <a
           routerLink="login"
           routerLinkActive="active"

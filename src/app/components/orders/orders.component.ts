@@ -1,9 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { pipe } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { CardTypeService } from 'src/app/services/card/card-type.service';
-import { AppConstants } from 'src/app/constants/app.constants'
+import { AppConstants } from 'src/app/constants/app.constants';
 import { AlertService } from 'src/app/services/alert/alert.service';
 
 @Component({
@@ -12,31 +9,34 @@ import { AlertService } from 'src/app/services/alert/alert.service';
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
-  title = AppConstants.CONSTANTS.PAGE_TITLES.ORDERS_PAGE;
-  scrollHeight = AppConstants.CONSTANTS.VIRTUAL_SCROLL_HEIGHT;
+  title = AppConstants.CONSTANTS.PAGES.ORDERS_PAGE.PAGE_TITLE;
+  scrollHeight = AppConstants.CONSTANTS.PAGES.ORDERS_PAGE.VIRTUAL_SCROLL_HEIGHT;
   items = [];
   constructor(
-    private cardService: CardTypeService,
+    // private cardService: CardTypeService,
     private httpClient: HttpClient,
-    private alertService:AlertService
+    private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
+    // previous usage  -->
     // this.cardService.onOffersCard();
     this.httpClient
-      .get<any>(AppConstants.CONSTANTS.API_URLS.ORDERS_API)
+      .get<any>(AppConstants.CONSTANTS.PAGES.ORDERS_PAGE.ORDERS_API)
       .subscribe((response) => {
         this.items = response.orders;
         // console.log(this.items);
       });
   }
 
-  onViewDetails(idx){
-    
+  /**
+   * @description: On Click of View Details, Opens Modalw with Orders and Loads Alert Box
+   * @param idx : It fetches the Index of the Item that is been Clicked
+   */
+  onViewDetails(idx: number) {
     this.alertService.item = this.items[idx];
     // console.log(this.alertService.item)
     this.alertService.onOrders();
-    this.alertService.onOpenAlert();  
-  
+    this.alertService.onOpenAlert();
   }
 }

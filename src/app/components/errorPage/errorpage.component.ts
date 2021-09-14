@@ -11,6 +11,9 @@ export class ErrorPageComponent implements OnInit {
 
   ngOnInit() {}
 
+  /**
+   * @description : on Click navigates to Home Page
+   */
   onClick() {
     this.router.navigate(['/home']);
   }

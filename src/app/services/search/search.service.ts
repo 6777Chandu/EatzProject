@@ -5,22 +5,22 @@ import { Injectable } from '@angular/core';
 })
 export class SearchService {
   constructor() {}
-  itemz = [];
+  items = [];
   searchValue: string = '';
-  emptySearch: boolean;
+  // emptySearch: boolean;
 
-  val: string = '';
-  
+  // val: string = '';
+
   ngDoCheck() {
-    this.emptySearch = false;
+    // this.emptySearch = false;
   }
 
   onSearchFromHome(value: string) {
     this.searchValue = value;
-    console.log(this.searchValue);
+    // console.log(this.searchValue);
   }
-
-  onEmptySearch() {
-    this.emptySearch = true;
-  }
+  // previous usage  -->
+  // onEmptySearch() {
+  //   this.emptySearch = true;
+  // }
 }

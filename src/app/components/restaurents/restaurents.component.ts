@@ -16,15 +16,16 @@ import { AppConstants } from 'src/app/constants/app.constants';
   styleUrls: ['./restaurents.component.scss'],
 })
 export class RestaurentsComponent implements OnInit {
-  title = AppConstants.CONSTANTS.PAGE_TITLES.RESTAURANTS_PAGE;
+  title = AppConstants.CONSTANTS.PAGES.RESTAURANTS_PAGE.PAGE_TITLE;
   items = [];
-  cardType="cardRestaurent"
+  cardType: string = 'cardRestaurent';
   len = 0;
   showError;
+
   @ViewChild('searchForm') searchForm: NgForm;
   @ViewChild('cards') cardsSel: ElementRef;
-  constructor(
 
+  constructor(
     private searchService: SearchService,
     private httpClient: HttpClient,
     private renderer: Renderer2
@@ -34,38 +35,21 @@ export class RestaurentsComponent implements OnInit {
   searchName = this.searchService.searchValue;
 
   ngOnInit(): void {
-  
     this.httpClient
-      .get<any>(AppConstants.CONSTANTS.API_URLS.RESTAURANTS_API)
+      .get<any>(AppConstants.CONSTANTS.PAGES.RESTAURANTS_PAGE.RESTAURANTS_API)
       .subscribe((response) => {
         this.items = response.result;
         console.log(this.items);
       });
-      this.showError = false;
+    this.showError = false;
   }
 
-  ngDoCheck() {
-    // console.log('Length', this.searchService.itemz.length);
-    // if (this.searchService.itemz.length === 0) {
-    //   this.showError = true;
-    // }
-  }
-
-  ngAfterViewChecked(){
-    console.log('Length', this.searchService.itemz.length);
-    this.len = this.searchService.itemz.length;
+  ngAfterViewChecked() {
+    console.log('Length', this.searchService.items.length);
+    this.len = this.searchService.items.length;
   }
 
   onSearch() {
     this.searchName = this.searchForm.value.search;
-
-    // console.log("Search", this.cardsSel);
-    // console.log("Search", this.renderer.);
-
-    
-    // console.log('Items', this.items.length);
-    // if (this.len === 0) {
-    //   this.showError = true;
-    // } 
   }
 }

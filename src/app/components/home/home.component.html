@@ -1,7 +1,7 @@
 <div class="hero">
   <div class="container">
     <div class="col">
-      <!-- TODO: Use a hierarchical heading tags. Use h2 tag for elements after h1 tags. -->
+      <!-- DONE: Use a hierarchical heading tags. Use h2 tag for elements after h1 tags. -->
       <h1 class="hero-title-top">Food</h1>
       <h2 class="hero-title-bottom">Discover Restaurant & Delicious Food</h2>
       <form (ngSubmit)="onSearch()" #searchForm="ngForm">
@@ -30,7 +30,7 @@
 <!-- ./ hero -->
 <!-- Suggestion: You can consider using section tags as well. -->
 <!-- #####################   STATIC CONTENT -->
-<div class="static-content">
+<section class="static-content">
   <div class="container">
     <div class="blockquote-wrapper">
       <div class="col blockquote">
@@ -97,13 +97,13 @@
     </div>
   </div>
   <!-- ./ restaurant-static-section -->
-</div>
+</section>
 <!-- ./ static-content -->
 
 <!-- #####################   END: STATIC CONTENT -->
 
 <section class="advance-booking-wrapper">
-  <!-- Do you need both these divs? container and advance booking?  -->
+  <!-- DONE: Do you need both these divs? container and advance booking?  -->
   <div class="container">
     <div class="advance-booking">
       <app-advance-booking></app-advance-booking>

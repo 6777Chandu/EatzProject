@@ -1,11 +1,10 @@
 <div class="alertbox-wrapper">
     <div class="alert-box">
-
         <div [ngSwitch]="alertType">
             <div *ngSwitchCase="'booking'">
                 Your booking is being considered. The team will get back as soon as possible.
                 <div>
-                    <button (click)="onClickClose()">Close</button>
+                    <button (click)="onClose()">Close</button>
                 </div>
             </div>
             <div *ngSwitchCase="'orders'">
@@ -18,7 +17,7 @@
                 </li>
               </ul>
                 <div>
-                    <button (click)="onClickClose()">Close</button>
+                    <button (click)="onClose()">Close</button>
                 </div>
             </div>
         </div> <!-- ./ switch -->
