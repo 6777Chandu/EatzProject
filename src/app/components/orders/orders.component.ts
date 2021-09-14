@@ -4,6 +4,7 @@ import { pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CardTypeService } from 'src/app/services/card/card-type.service';
 import { AppConstants } from 'src/app/constants/app.constants'
+import { AlertService } from 'src/app/services/alert/alert.service';
 
 @Component({
   selector: 'app-orders',
@@ -16,7 +17,8 @@ export class OrdersComponent implements OnInit {
   items = [];
   constructor(
     private cardService: CardTypeService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private alertService:AlertService
   ) {}
 
   ngOnInit(): void {
@@ -27,5 +29,14 @@ export class OrdersComponent implements OnInit {
         this.items = response.orders;
         // console.log(this.items);
       });
+  }
+
+  onViewDetails(idx){
+    
+    this.alertService.item = this.items[idx];
+    // console.log(this.alertService.item)
+    this.alertService.onOrders();
+    this.alertService.onOpenAlert();  
+  
   }
 }
