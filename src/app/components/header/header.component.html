@@ -2,7 +2,10 @@
 <header>
   <div class="container">
     <div class="navbar-wrapper">
-      <a routerLink=""><app-logo></app-logo></a>
+      <!-- Logos in header always take user to home page. Checkout real time apps like facebook -->
+      <a routerLink="">
+        <app-logo></app-logo>
+      </a>
       <nav>
         <!-- // DONE: Preferrably nav tags have only ul li  -->
         <!-- // DONE: Consider having the logo as a separate component. In most apps the logo get re-used.  -->
@@ -31,6 +34,7 @@
               >restaurents</a
             >
           </li>
+          <!-- why not ngcontainer and ngif instead of repeating the ngIf -->
           <li *ngIf="loginMode">
             <a
               routerLink="orders"
@@ -52,7 +56,8 @@
 
       <div *ngIf="loginMode" class="cart">
         <p class="cart-link" (click)="onClickShowCart()">
-          cart<sup>{{ cartCount }}</sup><i class="fas fa-chevron-down"></i>
+          cart<sup>{{ cartCount }}</sup
+          ><i class="fas fa-chevron-down"></i>
           <a (click)="onLogOut()">Logout </a>
         </p>
         <div class="cart-items" *ngIf="showCart">

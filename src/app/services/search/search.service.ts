@@ -10,6 +10,7 @@ export class SearchService {
   emptySearch: boolean;
 
   val: string = '';
+  
   ngDoCheck() {
     this.emptySearch = false;
   }

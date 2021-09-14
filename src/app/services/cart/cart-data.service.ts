@@ -6,10 +6,11 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 })
 export class CartDataService implements OnInit {
   cartItems = [];
+
   constructor() {}
 
   ngOnInit() {}
-
+  // Move to interface
   onPushItemstoCart(items: { title: string; val: number }) {
     this.cartItems.push(items);
   }

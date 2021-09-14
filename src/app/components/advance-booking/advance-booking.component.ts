@@ -19,7 +19,10 @@ export class AdvanceBookingComponent implements OnInit {
     'No Slots',
   ];
   mySortedTimeRange = [];
+  // camelCase??
   Mydate = new Date();
+  //Significance of Mydate variable?
+  //constants??. constants which will not change are usually written in CAPS_FORMAT 
   format = 'dd';
   locale = 'en-US';
   formattedDate = formatDate(this.Mydate, 'dd', this.locale);
@@ -31,6 +34,7 @@ export class AdvanceBookingComponent implements OnInit {
   temp = [];
 
   ngOnInit(): void {
+    // Move to shorter functions. Too much of unrelated logic in a single function
     const maxDate = new Date(
       parseInt(this.formattedDateByYear),
       parseInt(this.formattedDateByMonth),
@@ -49,7 +53,8 @@ export class AdvanceBookingComponent implements OnInit {
     // if (+this.formattedDate > +this.formattedDate + 1) {
     //   console.log('Hi There !');
     // }
-
+    
+    // Why not store the parsed values into variables to improve efficiency?
     if (
       parseInt(this.formattedDateByTime) >= 0 &&
       parseInt(this.formattedDateByTime) <= 8
@@ -123,5 +128,6 @@ export class AdvanceBookingComponent implements OnInit {
 
   onAdvanceBookingFormSubmit() {
     console.log(this.advanceBookingForm.value);
+    // Modal??
   }
 }

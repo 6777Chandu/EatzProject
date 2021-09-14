@@ -1,7 +1,8 @@
 <div class="wrapper">
   <hr />
+  <!-- Use div & border to achieve lines. DO NOT USE HR/BR tags -->
   <h1>advanced booking</h1>
-  
+  <!-- Why is the string not in constants? -->
   <form
     [formGroup]="advanceBookingForm"
     (ngSubmit)="onAdvanceBookingFormSubmit()"
@@ -18,6 +19,7 @@
   </div> <!-- ./ form-wrapper -->
 
   <p *ngIf="!advanceBookingForm.get('name').valid && advanceBookingForm.get('name').touched">Please enter Restaurant Name</p>
+  <!-- Why is the string not in constants? -->
 
 
     <div class="booking-options">
@@ -37,6 +39,7 @@
         </div>
         <select name="" id="" formControlName="time">
           <option value="{{ i }}" *ngFor="let i of mySortedTimeRange">
+            <!-- Use meaningul names -->
             {{ i }}
           </option>
         </select>
@@ -44,10 +47,12 @@
       <!-- ./ booking-item -->
 
       <div class="booking-item">
+        <!-- always try to avoid using html tag names for classes. form-label might be more apt -->
         <div class="label">
           <label for="date">Guests</label>
         </div>
         <select name="" id="" formControlName="guests">
+          <!-- Why are the options in an array and iterated in the DOM. What happens when the requirement is to add 10 more options? -->
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
