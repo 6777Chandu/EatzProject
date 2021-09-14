@@ -1,0 +1,27 @@
+<div class="alertbox-wrapper">
+    <div class="alert-box">
+
+        <div [ngSwitch]="alertType">
+            <div *ngSwitchCase="'booking'">
+                Your booking is being considered. The team will get back as soon as possible.
+                <div>
+                    <button (click)="onClickClose()">Close</button>
+                </div>
+            </div>
+            <div *ngSwitchCase="'orders'">
+                <h2>{{ item.restaurant }}</h2>
+              <h4>{{ item.location }}</h4>
+              <p>Order #{{ item.id }}</p>
+              <ul>
+                <li *ngFor="let subItem of item.orderItems">
+                  {{ subItem.name }} X {{ subItem.quantity }}
+                </li>
+              </ul>
+                <div>
+                    <button (click)="onClickClose()">Close</button>
+                </div>
+            </div>
+        </div> <!-- ./ switch -->
+        
+    </div> <!-- ./ alert-box -->
+</div> <!-- ./ alertbox-wrapper -->

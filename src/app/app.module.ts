@@ -21,6 +21,7 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
 import { LogoComponent } from './components/logo/logo.component';
 import { ErrorPageComponent } from './components/page404/errorpage.component';
 import { AdvanceBookingComponent } from './components/advance-booking/advance-booking.component';
+import { AlertBoxComponent } from './components/alert-box/alert-box.component';
 
 // TODO: Consider using the shared module concept and move shared component and dumb components into a shared module
 @NgModule({
@@ -38,6 +39,7 @@ import { AdvanceBookingComponent } from './components/advance-booking/advance-bo
     FilterPipe,
     LogoComponent,
     AdvanceBookingComponent,
+    AlertBoxComponent,
   ],
   imports: [
     BrowserModule,

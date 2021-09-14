@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AlertService } from 'src/app/services/alert/alert.service';
 
 @Component({
   selector: 'app-advance-booking',
@@ -8,7 +9,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./advance-booking.component.scss'],
 })
 export class AdvanceBookingComponent implements OnInit {
-  constructor() {}
+  constructor(private alertService:AlertService) {}
+  showAlert = true;
   advanceBookingForm: FormGroup;
   myDateRange = [];
   myTimeRange = [
@@ -123,5 +125,8 @@ export class AdvanceBookingComponent implements OnInit {
 
   onAdvanceBookingFormSubmit() {
     console.log(this.advanceBookingForm.value);
+    this.alertService.onBooking();
+    this.alertService.onOpenAlert();  
+   console.log(this.alertService.showAlert)
   }
 }

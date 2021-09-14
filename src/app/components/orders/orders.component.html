@@ -8,7 +8,7 @@
       </div>
       <!-- ./ heading-page -->
       <div class="cards">
-        <div class="order-card" *cdkVirtualFor="let item of items">
+        <div class="order-card" *cdkVirtualFor="let item of items; let idx=index">
           <div class="order-content-left">
             <img
               src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,c_fill/{{
@@ -37,7 +37,7 @@
             <p>
               Total: <span>&#8377;{{ item.price.total }}</span>
             </p>
-            <button>View Details</button>
+            <button (click)="onViewDetails(idx)">View Details</button>
             <button *ngIf="item.status === 'ORDERED'">Track Order</button>
             <button *ngIf="item.status === 'ORDERED'">Cancel Order</button>
           </div>
