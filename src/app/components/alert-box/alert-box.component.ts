@@ -7,6 +7,7 @@ import { AlertService } from 'src/app/services/alert/alert.service';
   styleUrls: ['./alert-box.component.scss'],
 })
 export class AlertBoxComponent implements OnInit {
+  alertOpen: boolean = true;
   constructor(private alertService: AlertService) {}
 
   alertType = '';
@@ -22,8 +23,15 @@ export class AlertBoxComponent implements OnInit {
   /**
    * @description Closes the alertBox and Resets the alertType both in AlertSerivce
    */
-  onClose() {
-    this.alertService.onCloseAlert();
-    this.alertService.alertType = '';
+  onClose(name:string) {
+    let time=0;
+    this.alertOpen = false;
+    if(name !== "booking"){
+      time = 500;
+    }
+    setTimeout(() => {
+      this.alertService.onCloseAlert();
+      this.alertService.alertType = '';
+    }, time);
   }
 }
