@@ -18,9 +18,9 @@ export class HeaderComponent implements OnInit {
 
   CartItems = [];
 
-  isCartEmpty:boolean = true;
+  isCartEmpty: boolean = true;
   showCart: boolean = false;
-  cartCount:number = 0;
+  cartCount: number = 0;
   isLoginMode: boolean;
 
   ngOnInit() {
@@ -46,7 +46,6 @@ export class HeaderComponent implements OnInit {
     // this.router.navigate(['/home']);
   }
 
-  
   /**
    * @description: On Click Toggles the Cart
    */

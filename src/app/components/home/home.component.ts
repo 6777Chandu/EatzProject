@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { SearchService } from 'src/app/services/search/search.service';
 import { AppConstants } from 'src/app/constants/app.constants'
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

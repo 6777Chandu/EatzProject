@@ -22,6 +22,11 @@ const routes: Routes = [
     component: OrdersComponent,
     canActivate: [AuthGuardService],
   },
+  // {
+  //   path: 'orders',
+  //   loadChildren: './components/orders/orders.module#OrdersComponent',
+  //   canActivate: [AuthGuardService],
+  // },
   { path: '**', redirectTo: '404' },
 ];
 
