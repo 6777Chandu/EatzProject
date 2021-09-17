@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HeaderComponent } from './header.component';
 
-describe('HeaderComponent', () => {
+describe('HeaderComponent in Login Mode', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
@@ -22,11 +22,11 @@ describe('HeaderComponent', () => {
     expect(app.CartItems).toEqual([]);
   });
 
-  it(`should LogOut at click of LogOut button`, () => {
-    const fixture = TestBed.createComponent(HeaderComponent);
-    const app = fixture.componentInstance;
-    expect(app.onLogOut()).toBe(expect(app.isLoginMode).toEqual(false));
-  });
+  // it(`should LogOut at click of LogOut button`, () => {
+  //   const fixture = TestBed.createComponent(HeaderComponent);
+  //   const app = fixture.componentInstance;
+  //   expect(app.onLogOut()).toBe(expect(app.isLoginMode).toEqual(false));
+  // });
 
   //toEqual
   // can check how times a fn is called

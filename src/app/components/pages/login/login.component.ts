@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AppConstants } from 'src/app/constants/app.constants';
 import { LoginService } from 'src/app/services/login/login.service';
 
@@ -29,8 +30,14 @@ export class LoginComponent implements OnInit {
     access: null,
   };
 
+  isLoggedIn: boolean;
+  loginSubscription:Subscription;
+
   ngOnInit(): void {
-    if (this.loginService.isLoggedIn === true) {
+    this.loginSubscription = this.loginService.isLoggedIn.subscribe(
+      (value) => (this.isLoggedIn = value)
+    );
+    if (this.isLoggedIn) {
       this.router.navigate(['/orders']);
     }
   }
@@ -52,5 +59,9 @@ export class LoginComponent implements OnInit {
       // console.log('try Again!');
       this.user.access = false;
     }
+  }
+
+  ngOnDestroy() {
+    this.loginSubscription.unsubscribe();
   }
 }

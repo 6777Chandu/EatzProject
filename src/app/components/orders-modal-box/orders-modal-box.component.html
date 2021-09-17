@@ -1,0 +1,38 @@
+<div class="alertbox-wrapper">
+
+  <div
+    class="alert-slider alert-box-slider animate__animated"
+    [ngClass]="{
+      animate__slideInRight: alertOpen,
+      animate__slideOutRight: !alertOpen
+    }"
+   
+  >
+    <h1>Status: {{ item.status | lowercase }}</h1>
+
+    <img
+      src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,c_fill/{{
+        item.imageId
+      }}"
+      [alt]="item.restaurant"
+    />
+    <h2>{{ item.restaurant }}</h2>
+    <h4>{{ item.location }}</h4>
+    <p>Order #{{ item.id }}</p>
+
+    <h4>Ordered Items:</h4>
+    <ul>
+      <li *ngFor="let subItem of item.orderItems">
+        {{ subItem.name }} X {{ subItem.quantity }}
+      </li>
+    </ul>
+    <div class="border-line-top"></div>
+    <h2>Total: &#8377; {{ item.price.total }}</h2>
+    <div>
+      <button (click)="onClose('slider')">Close</button>
+    </div>
+  </div>
+</div>
+<!-- ./ alert-box -->
+
+<!-- ./ alertbox-wrapper -->

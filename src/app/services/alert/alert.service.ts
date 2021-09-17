@@ -1,39 +1,40 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlertService {
   constructor() {}
-  alertType:string = '';
-  showAlert:boolean = false;
-  item = {};
+  showAlertBooking = new BehaviorSubject<boolean>(false);
+  showAlertOrders = new BehaviorSubject<boolean>(false);
+  orderItems = new BehaviorSubject<object>({});
 
   /**
-   * @description Sets alertType to Booking
+   * @description Sets ShowAlertBooking to true, which displays the alert Box
    */
-  onBooking() {
-    this.alertType = 'booking';
+  onOpenAlertBooking() {
+    this.showAlertBooking.next(true);
   }
 
   /**
-   * @description Sets alertType to Orders
+   * @description Sets ShowAlertBooking to false, which closes the alert Box
    */
-  onOrders() {
-    this.alertType = 'orders';
+  onCloseAlertBooking() {
+    this.showAlertBooking.next(false);
   }
 
   /**
-   * @description Sets ShowAlert to true, which displays the alert Box
+   * @description Sets showAlertOrders to true, which displays the alert Box
    */
-  onOpenAlert() {
-    this.showAlert = true;
+  onOpenAlertOrders() {
+    this.showAlertOrders.next(true);
   }
 
   /**
-   * @description Sets ShowAlert to false, which closes the alert Box
+   * @description Sets showAlertOrders to false, which closes the alert Box
    */
-  onCloseAlert() {
-    this.showAlert = false;
+  onCloseAlertOrders() {
+    this.showAlertOrders.next(false);
   }
 }

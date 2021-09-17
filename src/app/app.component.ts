@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AlertService } from './services/alert/alert.service';
 
 @Component({
@@ -11,12 +12,21 @@ import { AlertService } from './services/alert/alert.service';
 export class AppComponent {
   title = 'EatzProject';
   constructor(public router: Router, private alertService: AlertService) {}
-  showAlert = false;
+  showAlert: boolean;
+  showAlertOrders: boolean;
+  alertSubscription: Subscription;
+  alertOrdersSubscription: Subscription;
   ngOnInit() {
-    console.log(this.alertService.showAlert);
+    this.alertSubscription = this.alertService.showAlertBooking.subscribe(
+      (value) => (this.showAlert = value)
+    );
+    this.alertOrdersSubscription = this.alertService.showAlertOrders.subscribe(
+      (value) => (this.showAlertOrders = value)
+    );
   }
 
-  ngDoCheck() {
-    this.showAlert = this.alertService.showAlert;
+  ngOnDestroy() {
+    this.alertSubscription.unsubscribe();
+    this.alertOrdersSubscription.unsubscribe();
   }
 }

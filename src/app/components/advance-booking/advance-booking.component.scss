@@ -95,5 +95,14 @@
         }
       }
     }
+
+    select {
+      border: none;
+      padding: 10px 0;
+      // color: red;
+      &:focus {
+        outline: none;
+      }
+    }
   }
 }

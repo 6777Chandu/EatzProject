@@ -10,28 +10,19 @@ export class AlertBoxComponent implements OnInit {
   alertOpen: boolean = true;
   constructor(private alertService: AlertService) {}
 
-  alertType = '';
-  item = {};
+
+
 
   ngOnInit(): void {}
 
-  ngDoCheck() {
-    this.alertType = this.alertService.alertType;
-    this.item = this.alertService.item;
-  }
+
 
   /**
-   * @description Closes the alertBox and Resets the alertType both in AlertSerivce
+   * @description Closes the alertBox 
    */
-  onClose(name:string) {
-    let time=0;
+  onClose() {
     this.alertOpen = false;
-    if(name !== "booking"){
-      time = 500;
-    }
-    setTimeout(() => {
-      this.alertService.onCloseAlert();
-      this.alertService.alertType = '';
-    }, time);
+    this.alertService.onCloseAlertBooking();
+    
   }
 }

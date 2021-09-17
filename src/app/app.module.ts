@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 // import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RestaurentsComponent } from './components/restaurents/restaurents.component';
-import { OffersComponent } from './components/offers/offers.component';
+import { OffersComponent } from './components/pages/offers/offers.component';
 // import { FoodItemCardComponent } from './components/food-item-card/food-item-card.component';
 // import { HomeComponent } from './components/home/home.component';
 // import { HeaderComponent } from './components/header/header.component';
@@ -13,19 +13,21 @@ import { OffersComponent } from './components/offers/offers.component';
 import { AuthGuardService } from './services/login/auth-guard.service';
 import { LoginService } from './services/login/login.service';
 // import { ScrollingModule } from '@angular/cdk/scrolling';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/pages/login/login.component';
 // import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // import { AdvanceBookingComponent } from './components/advance-booking/advance-booking.component';
 // import { AlertBoxComponent } from './components/alert-box/alert-box.component';
 
-import { ErrorPageComponent } from './components/errorPage/errorpage.component';
+import { ErrorPageComponent } from './components/pages/error-page/errorpage.component';
 // import { FilterPipe } from './pipes/filter/filter.pipe';
 // import { LogoComponent } from './components/logo/logo.component';
 
 import { SharedModule } from './components/shared/shared/shared.module';
-import { OrdersModule } from './components/orders/orders.module';
-import { HomeModule } from './components/home/home.module';
+import { OrdersModule } from './components/pages/orders/orders.module';
+import { HomeModule } from './components/pages/home/home.module';
+import { OrdersModalBoxComponent } from './components/orders-modal-box/orders-modal-box.component';
+
 
 // TODO: Consider using the shared module concept and move shared component and dumb components into a shared module
 @NgModule({
@@ -42,6 +44,7 @@ import { HomeModule } from './components/home/home.module';
     // AdvanceBookingComponent,
     // AlertBoxComponent,
     ErrorPageComponent,
+    OrdersModalBoxComponent,
     // FilterPipe,
     // LogoComponent,
   ],
@@ -50,6 +53,7 @@ import { HomeModule } from './components/home/home.module';
     // FormsModule,
     SharedModule,
     HomeModule,
+
     // AppRoutingModule,
     OrdersModule,
     HttpClientModule,

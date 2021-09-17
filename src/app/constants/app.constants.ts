@@ -1,6 +1,5 @@
 export class AppConstants {
   public static CONSTANTS = {
-  
     PAGES: {
       HOME_PAGE: {
         HERO_IMG_PATH: 'assets/images/LoginImage.png',
@@ -43,13 +42,19 @@ export class AppConstants {
       },
       LOGIN_PAGE: {
         PAGE_TITLE: 'Login into Eatz',
-        FORM_VALIDATIONS:{
+        FORM_VALIDATIONS: {
           ERROR_MSG: 'Wrong Username/Password',
           USERNAME_MSG: 'Please enter Username',
           PASSWORD_MSG: 'Please enter Password',
-          BUTTON_NAME: 'Login'
-        }
+          BUTTON_NAME: 'Login',
+        },
       },
     },
   };
+}
+
+export enum CardTypes {
+  restaurents = 'cardRestaurent',
+  home = 'cardHome',
+  offers = 'cardOffers',
 }

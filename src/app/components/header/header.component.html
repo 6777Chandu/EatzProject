@@ -71,9 +71,10 @@
           *ngIf="showCart"
         >
           <ul>
-            <li *ngFor="let item of CartItems; let idx = index">
-              <h3>{{ item.title }}</h3>
-              <span>{{ item.val }}</span>
+            <li *ngFor="let item of cartItems; let idx = index">
+              <h3>{{ item.name }}</h3>
+              <span>{{ item.val }} <i (click)="getItem(idx)" class="fas fa-times-circle"></i></span>
+              
             </li>
           </ul>
           <p *ngIf="isCartEmpty">No Items in the Cart</p>

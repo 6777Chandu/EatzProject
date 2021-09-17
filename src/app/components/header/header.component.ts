@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CartDataService } from 'src/app/services/cart/cart-data.service';
 import { LoginService } from 'src/app/services/login/login.service';
 
@@ -16,7 +17,10 @@ export class HeaderComponent implements OnInit {
   // previous usage  -->
   // CartItems = this.cartService.onShowCartItems();
 
-  CartItems = [];
+  cartSubscription: Subscription;
+  loginSubscription: Subscription;
+
+  cartItems = [];
 
   isCartEmpty: boolean = true;
   showCart: boolean = false;
@@ -24,17 +28,33 @@ export class HeaderComponent implements OnInit {
   isLoginMode: boolean;
 
   ngOnInit() {
-    this.cartService.cartItem.subscribe((data) => this.CartItems.push(data));
-    this.CartItems.splice(0, 1);
+    this.cartSubscription = this.cartService.cartItems.subscribe((title: string) => {
+      let prevItemInCartCount = 0;
+      this.cartItems.map((item) => {
+        if (item.name === title) {
+          item.val++;
+          prevItemInCartCount++;
+        }
+      });
+      if (prevItemInCartCount === 0) {
+        this.cartItems.push({ name: title, val: 1 });
+      } else {
+      }
+      this.cartCount = this.cartItems.length;
+      if (this.cartCount > 0) {
+        this.isCartEmpty = false;
+      }
+      // console.log('cartItems', a);
+      console.log(this.cartItems);
+    });
+
+    this.loginSubscription = this.loginService.isLoggedIn.subscribe(
+      (value) => (this.isLoginMode = value)
+    );
   }
 
-  ngDoCheck() {
-    this.isLoginMode = this.loginService.isLoggedIn;
-    this.cartCount = this.CartItems.length;
-    if (this.cartCount > 0) {
-      this.isCartEmpty = false;
-    }
-    // console.log(this.CartItems)
+  getItem(index: number) {
+    this.cartItems.splice(index, 1);
   }
 
   /**
@@ -51,5 +71,10 @@ export class HeaderComponent implements OnInit {
    */
   onClickShowCart() {
     this.showCart = !this.showCart;
+  }
+
+  ngOnDestroy() {
+    this.cartSubscription.unsubscribe();
+    this.loginSubscription.unsubscribe();
   }
 }

@@ -8,7 +8,9 @@ import {
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SearchService } from 'src/app/services/search/search.service';
-import { AppConstants } from 'src/app/constants/app.constants';
+import { AppConstants, CardTypes } from 'src/app/constants/app.constants';
+import { Subscription } from 'rxjs';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-restaurents',
@@ -18,7 +20,7 @@ import { AppConstants } from 'src/app/constants/app.constants';
 export class RestaurentsComponent implements OnInit {
   title = AppConstants.CONSTANTS.PAGES.RESTAURANTS_PAGE.PAGE_TITLE;
   items = [];
-  cardType: string = 'cardRestaurent';
+  cardType: string = CardTypes.restaurents;
   len = 0;
   showError;
 
@@ -27,20 +29,18 @@ export class RestaurentsComponent implements OnInit {
 
   constructor(
     private searchService: SearchService,
-    private httpClient: HttpClient,
-    private renderer: Renderer2
+    private apiService: ApiService
   ) {}
 
   names = this.searchService.searchValue;
   searchName = this.searchService.searchValue;
 
+  restaurentApiSubscription: Subscription;
+
   ngOnInit(): void {
-    this.httpClient
-      .get<any>(AppConstants.CONSTANTS.PAGES.RESTAURANTS_PAGE.RESTAURANTS_API)
-      .subscribe((response) => {
-        this.items = response.result;
-        console.log(this.items);
-      });
+    this.restaurentApiSubscription = this.apiService
+      .fetchData(AppConstants.CONSTANTS.PAGES.RESTAURANTS_PAGE.RESTAURANTS_API)
+      .subscribe((data) => (this.items = data.result));
     this.showError = false;
   }
 
@@ -51,5 +51,9 @@ export class RestaurentsComponent implements OnInit {
 
   onSearch() {
     this.searchName = this.searchForm.value.search;
+  }
+
+  ngOnDestroy(){
+    this.restaurentApiSubscription.unsubscribe();
   }
 }

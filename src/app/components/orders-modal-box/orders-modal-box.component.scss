@@ -1,0 +1,78 @@
+// Imports -  Variables
+@import "../../theme/scss/variables.scss";
+
+.alertbox-wrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 50;
+
+
+  .alert-slider {
+    position: absolute;
+    right: 0;
+    width: 25%;
+    height: 100vh;
+    background-color: #fff;
+    padding: 50px;
+
+    .border-line-top{
+      margin: 30px 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    img{
+      height: 30%;
+      width: 80%;
+      margin-bottom: 30px;
+    }
+    h1 {
+      font: {
+        size: 30px;
+        weight: 500;
+      }
+      text-transform: capitalize;
+      margin-bottom: 30px;
+    }
+    h2 {
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+
+    h4,p{
+      margin-bottom: 5px;
+    }
+
+    p+h4{
+      margin-top: 30px ;
+    }
+
+    ul{
+      li{
+        padding: 5px 0;
+        &:before{
+          content:'>'
+        }
+      }
+    }
+    button {
+      font-size: 18px;
+      text-transform: capitalize;
+      color: $font-white;
+      background-color: $theme-primary;
+      margin-top: 50px;
+      padding: 15px 40px;
+      border: none;
+      cursor: pointer;
+      &:disabled {
+        cursor: default;
+      }
+    }
+  }
+}
+
+.animate__animated.animate__slideInRight,
+.animate__animated.animate__slideOutRight {
+  --animate-duration: 0.5s;
+}

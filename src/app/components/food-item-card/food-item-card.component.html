@@ -10,49 +10,52 @@
   />
 
   <div [ngSwitch]="cardType">
-  <div *ngSwitchCase="'cardHome'" class="item-card-home">
-    <div class="meta">
-      <h2>{{ item.name }}</h2>
-      <h2>&#8377; {{ item.price.discountPrice }}</h2>
-    </div>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, itaque.
-    </p>
-  </div>
-  <!-- ./ item-card-home -->
-
-  <div *ngSwitchCase="'cardRestaurent'" class="item-card-restaurent">
-    <div class="meta">
-      <div class="restaurant-info-1">
+    <div *ngSwitchCase="cardHome" class="item-card-home">
+      <div class="meta">
         <h2>{{ item.name }}</h2>
-        <h2>Somewhere in the City</h2>
-        <p>{{ item.cuisine }}</p>
+        <h2>&#8377; {{ item.price.discountPrice }}</h2>
       </div>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis,
+        itaque.
+      </p>
+    </div>
+    <!-- ./ item-card-home -->
 
-      <div class="restaurant-info-2">
-        <p>Rating: {{ ratingVal }}</p>
-        <p>Delivery in {{ item.deliveryTimeInMins }} mins</p>
-        <p>&#8377; {{ item.price.costForTwo }} for two</p>
-        <button [disabled]="!item.open">See More</button>
+    <div *ngSwitchCase="cardRestaurent" class="item-card-restaurent">
+      <div class="meta">
+        <div class="restaurant-info-1">
+          <h2>{{ item.name }}</h2>
+          <h2>Somewhere in the City</h2>
+          <p>{{ item.cuisine }}</p>
+        </div>
+
+        <div class="restaurant-info-2">
+          <p>Rating: {{ ratingVal }}</p>
+          <p>Delivery in {{ item.deliveryTimeInMins }} mins</p>
+          <p>&#8377; {{ item.price.costForTwo }} for two</p>
+          <button [disabled]="!item.open">See More</button>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- ./ item-card-restaurent -->
+    <!-- ./ item-card-restaurent -->
 
-  <div *ngSwitchCase="'cardOffers'" class="item-card-offers">
-    <div class="meta">
-      <h2>{{ item.name }}</h2>
-      <h2>&#8377; {{ item.price.discountPrice }}</h2>
-      <h3>{{ item.restaurant }}</h3>
-      <h3>&#8377; {{ item.price.costPrice }}</h3>
+    <div *ngSwitchCase="cardOffers" class="item-card-offers">
+      <div class="meta">
+        <h2>{{ item.name }}</h2>
+        <h2>&#8377; {{ item.price.discountPrice }}</h2>
+        <h3>{{ item.restaurant }}</h3>
+        <h3>&#8377; {{ item.price.costPrice }}</h3>
+      </div>
+
+      <p>Delivery in {{ item.deliveryTimeInMins }} mins</p>
+      <button [disabled]="!item.available" (click)="onAddToCart()">
+        Add to Cart
+      </button>
+      <div style="clear: both"></div>
     </div>
-
-    <p>Delivery in {{ item.deliveryTimeInMins }} mins</p>
-    <button [disabled]="!item.available" (click)="onAddToCart()">Add to Cart</button>
-    <div style="clear: both"></div>
+    <!-- ./ item-card-Offers -->
   </div>
-  <!-- ./ item-card-Offers -->
-
-</div> <!-- ./ switch -->
+  <!-- ./ switch -->
 </div>
 <!-- ./ item-card-->

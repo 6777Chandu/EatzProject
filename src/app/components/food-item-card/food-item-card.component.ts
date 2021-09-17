@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CardTypes } from 'src/app/constants/app.constants';
 import { CartDataService } from 'src/app/services/cart/cart-data.service';
 import { LoginService } from 'src/app/services/login/login.service';
 
@@ -12,9 +13,11 @@ export class FoodItemCardComponent implements OnInit {
   @Input() item: any;
   @Input() cardType: string;
 
-  cartItems = [];
-
   ratingVal: string;
+  isLoggedIn: boolean;
+  cardHome: string = CardTypes.home;
+  cardOffers: string = CardTypes.offers;
+  cardRestaurent: string = CardTypes.restaurents;
 
   constructor(
     // previous usage  -->
@@ -26,36 +29,19 @@ export class FoodItemCardComponent implements OnInit {
   ngOnInit(): void {
     const rating = Math.random() * (5 - 1) + 1;
     this.ratingVal = rating.toFixed(2);
-    this.cartService.cartItem.subscribe((data) => this.cartItems.push(data));
+    this.loginService.isLoggedIn.subscribe(
+      (value) => (this.isLoggedIn = value)
+    );
   }
 
   /**
    * @description: Adds Items to Carts and Supplies to Cart Data Service
    */
   onAddToCart() {
-    let itemValue = 0;
-
-    if (this.loginService.isLoggedIn === false) {
-      this.router.navigate(['/login']);
+    if (this.isLoggedIn) {
+      this.cartService.cartItems.next(this.item.name);
     } else {
-      for (let i of this.cartItems) {
-        if (i.title === this.item.name) {
-          itemValue++;
-        }
-      }
-
-      if (itemValue > 0) {
-        this.cartItems.map((data) => {
-          if (data.title == this.item.name) {
-            data.val++;
-          }
-        });
-      } else {
-        this.cartService.onAddToCart({
-          title: this.item.name,
-          val: 1,
-        });
-      }
+      this.router.navigate(['/login']);
     }
   }
 }

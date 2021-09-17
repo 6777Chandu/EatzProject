@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
   constructor(private router: Router) {
-    this.isLoggedIn = true; // <== Change this to false
+    this.isLoggedIn = new BehaviorSubject<boolean>(false); // <== Change this to false
   }
-  isLoggedIn: boolean;
+  isLoggedIn: BehaviorSubject<boolean>;
 
   /**
    * @description Login the user and navigate to orders page
    */
   toLogIn() {
     // console.log('Fired Log In');
-    this.isLoggedIn = true;
+    this.isLoggedIn.next(true);
     this.router.navigate(['/orders']);
   }
 
@@ -24,7 +25,7 @@ export class LoginService {
    */
   toLogOut() {
     // console.log('Fired Log Out');
-    this.isLoggedIn = false;
+    this.isLoggedIn.next(false);
     this.router.navigate(['/login']);
   }
 }

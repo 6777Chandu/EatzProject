@@ -33,11 +33,18 @@
         <div class="form-label">
           <label for="date">Date</label>
         </div>
-        <select name="" id="" formControlName="date">
+
+        <input
+          type="date"
+          formControlName="date"
+          min="2021-09-17"
+          max="2022-05-17"
+        />
+        <!-- <select name="" id="">
           <option value="{{ item }}" *ngFor="let item of myDateRange">
             {{ item }}
           </option>
-        </select>
+        </select> -->
       </div>
       <!-- ./ booking-item -->
 
@@ -61,9 +68,9 @@
         </div>
         <select name="" id="" formControlName="guests">
           <!-- DONE: Why are the options in an array and iterated in the DOM. What happens when the requirement is to add 10 more options? -->
-          <option value="{{ item }}" *ngFor="let item of guests">
+          <option [value]="item" *ngFor="let item of guests">
             <!-- DONE: Use meaningul names -->
-            {{ item }}
+            {{ item }} {{ item === "1" ? "Person" : "People" }}
           </option>
         </select>
       </div>

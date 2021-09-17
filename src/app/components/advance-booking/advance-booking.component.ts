@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/services/alert/alert.service';
@@ -21,12 +21,13 @@ export class AdvanceBookingComponent implements OnInit {
 
   // showAlert = true;
   advanceBookingForm: FormGroup;
-  myDateRange = [];
+  // myDateRange = [];
   myTimeRange =
     AppConstants.CONSTANTS.PAGES.HOME_PAGE.PAGE_COMPONENTS_TITLE
       .ADVANCE_BOOKING_TIMING;
-  guests = AppConstants.CONSTANTS.PAGES.HOME_PAGE.PAGE_COMPONENTS_TITLE
-  .ADVANCE_BOOKING_GUESTS;
+  guests =
+    AppConstants.CONSTANTS.PAGES.HOME_PAGE.PAGE_COMPONENTS_TITLE
+      .ADVANCE_BOOKING_GUESTS;
   mySortedTimeRange = [];
 
   myDate = new Date();
@@ -36,6 +37,7 @@ export class AdvanceBookingComponent implements OnInit {
       .ADVANCE_BOOKING_OPTIONS.LOCALE;
 
   formattedDate = formatDate(this.myDate, 'dd', this.locale);
+  formattedDateFull = formatDate(this.myDate, 'yyyy-MM-dd', this.locale);
   formattedDateByYear = formatDate(this.myDate, 'yyyy', this.locale);
   formattedDateByMonth = formatDate(this.myDate, 'mm', this.locale);
   formattedDateByTime = formatDate(this.myDate, 'HH:mm', this.locale);
@@ -46,26 +48,29 @@ export class AdvanceBookingComponent implements OnInit {
 
   ngOnInit(): void {
     // DONE: Move to shorter functions. Too much of unrelated logic in a single function
-    const maxDate = new Date(
-      parseInt(this.formattedDateByYear),
-      parseInt(this.formattedDateByMonth),
-      0
-    );
-    const formatMaxDate = formatDate(maxDate, 'dd', this.locale);
+    // const maxDate = new Date(
+    //   parseInt(this.formattedDateByYear),
+    //   parseInt(this.formattedDateByMonth),
+    //   0
+    // );
+    // const formatMaxDate = formatDate(maxDate, 'dd', this.locale);
 
-    for (
-      let i = parseInt(this.formattedDate);
-      i <= parseInt(formatMaxDate);
-      i++
-    ) {
-      this.myDateRange.push(i);
-    }
+    // for (
+    //   let i = parseInt(this.formattedDate);
+    //   i <= parseInt(formatMaxDate);
+    //   i++
+    // ) {
+    //   this.myDateRange.push(i);
+    // }
 
     this.onCheckMinAndMaxRanges();
 
+    console.log(this.formattedDateFull)
+
     this.advanceBookingForm = new FormGroup({
       name: new FormControl(null, Validators.required),
-      date: new FormControl(this.formattedDate),
+      // date: new FormControl(this.formattedDate),
+      date: new FormControl(this.formattedDateFull),
       time: new FormControl(this.mySortedTimeRange[0]),
       guests: new FormControl('1'),
     });
@@ -107,7 +112,7 @@ export class AdvanceBookingComponent implements OnInit {
    */
   onformValueChange() {
     this.advanceBookingForm.get('date').valueChanges.subscribe((value) => {
-      if (value === this.formattedDate) {
+      if (value === this.formattedDateFull) {
         this.mySortedTimeRange = this.temp;
         console.log(this.mySortedTimeRange);
         this.advanceBookingForm.patchValue({
@@ -131,8 +136,7 @@ export class AdvanceBookingComponent implements OnInit {
    */
   onAdvanceBookingFormSubmit() {
     console.log(this.advanceBookingForm.value);
-    this.alertService.onBooking();
-    this.alertService.onOpenAlert();
-    console.log(this.alertService.showAlert);
+    this.alertService.onOpenAlertBooking();
+
   }
 }
